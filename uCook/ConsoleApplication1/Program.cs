@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ServiceModel;
 using uCookContract;
 
-namespace ConsoleApplication1
+namespace serverUcook
 {
     class Program
     {

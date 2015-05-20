@@ -1,0 +1,11 @@
+D:\PTT42\uCook\uCook\ClientUCook\bin\Debug\ClientUCook.exe.config
+D:\PTT42\uCook\uCook\ClientUCook\bin\Debug\ClientUCook.exe
+D:\PTT42\uCook\uCook\ClientUCook\bin\Debug\ClientUCook.pdb
+D:\PTT42\uCook\uCook\ClientUCook\bin\Debug\contract.dll
+D:\PTT42\uCook\uCook\ClientUCook\bin\Debug\contract.pdb
+D:\PTT42\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.csprojResolveAssemblyReference.cache
+D:\PTT42\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.uCookClient.resources
+D:\PTT42\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.Properties.Resources.resources
+D:\PTT42\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.csproj.GenerateResource.Cache
+D:\PTT42\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.exe
+D:\PTT42\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.pdb

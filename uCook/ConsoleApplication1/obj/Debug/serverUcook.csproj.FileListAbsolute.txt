@@ -1,0 +1,8 @@
+D:\PTT42\uCook\uCook\ConsoleApplication1\bin\Debug\serverUcook.exe.config
+D:\PTT42\uCook\uCook\ConsoleApplication1\bin\Debug\serverUcook.exe
+D:\PTT42\uCook\uCook\ConsoleApplication1\bin\Debug\serverUcook.pdb
+D:\PTT42\uCook\uCook\ConsoleApplication1\bin\Debug\contract.dll
+D:\PTT42\uCook\uCook\ConsoleApplication1\bin\Debug\contract.pdb
+D:\PTT42\uCook\uCook\ConsoleApplication1\obj\Debug\serverUcook.csprojResolveAssemblyReference.cache
+D:\PTT42\uCook\uCook\ConsoleApplication1\obj\Debug\serverUcook.exe
+D:\PTT42\uCook\uCook\ConsoleApplication1\obj\Debug\serverUcook.pdb

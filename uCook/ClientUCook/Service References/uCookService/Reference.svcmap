@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d6fd9d35-b1d9-4869-9b5a-c7bbb2925388" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/uCookService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="uCookService.xsd" MetadataType="Schema" ID="bdf24ee6-a97f-4833-9b0a-3481b9a91373" SourceId="1" SourceUrl="http://localhost:8000/uCookService?xsd=xsd2" />
+    <MetadataFile FileName="uCookService.wsdl" MetadataType="Wsdl" ID="7f8968fd-fc7e-4876-ac9b-3cb8f9b0035a" SourceId="1" SourceUrl="http://localhost:8000/uCookService?wsdl=wsdl0" />
+    <MetadataFile FileName="uCookService.disco" MetadataType="Disco" ID="a63f4c9a-204b-4d8d-83c8-ff345d75bb72" SourceId="1" SourceUrl="http://localhost:8000/uCookService?disco" />
+    <MetadataFile FileName="uCookService1.xsd" MetadataType="Schema" ID="e1053204-29b9-4ebc-8dc2-95e4dd29159b" SourceId="1" SourceUrl="http://localhost:8000/uCookService?xsd=xsd0" />
+    <MetadataFile FileName="CuCook.wsdl" MetadataType="Wsdl" ID="6abd159d-9a31-4a3e-a3b4-1d75d087b03b" SourceId="1" SourceUrl="http://localhost:8000/uCookService?wsdl" />
+    <MetadataFile FileName="uCookService2.xsd" MetadataType="Schema" ID="dfd4aa95-aa7b-44cd-8ab5-2b3baff9b4db" SourceId="1" SourceUrl="http://localhost:8000/uCookService?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

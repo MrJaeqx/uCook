@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/uCookContract" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/uCookContract" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Recipe">
+    <xs:sequence>
+      <xs:element name="_x003C_ID_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_appliances_x003E_k__BackingField" nillable="true" type="tns:ArrayOfAppliance" />
+      <xs:element name="_x003C_ingredients_x003E_k__BackingField" nillable="true" type="tns:ArrayOfIngredient" />
+      <xs:element name="_x003C_name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_timeLine_x003E_k__BackingField" nillable="true" type="tns:TimeLine" />
+      <xs:element name="_x003C_totalTime_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Recipe" nillable="true" type="tns:Recipe" />
+  <xs:complexType name="ArrayOfAppliance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Appliance" nillable="true" type="tns:Appliance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAppliance" nillable="true" type="tns:ArrayOfAppliance" />
+  <xs:complexType name="Appliance">
+    <xs:sequence>
+      <xs:element name="_x003C_ID_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_name_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_price_x003E_k__BackingField" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Appliance" nillable="true" type="tns:Appliance" />
+  <xs:complexType name="ArrayOfIngredient">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ingredient" nillable="true" type="tns:Ingredient" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIngredient" nillable="true" type="tns:ArrayOfIngredient" />
+  <xs:complexType name="Ingredient">
+    <xs:sequence>
+      <xs:element name="_x003C_amount_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_name_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ingredient" nillable="true" type="tns:Ingredient" />
+  <xs:complexType name="TimeLine">
+    <xs:sequence>
+      <xs:element name="_x003C_ammountTimeSlots_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_currentSlot_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_timeLine_x003E_k__BackingField" nillable="true" type="tns:ArrayOfTimeSlot" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeLine" nillable="true" type="tns:TimeLine" />
+  <xs:complexType name="ArrayOfTimeSlot">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TimeSlot" nillable="true" type="tns:TimeSlot" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimeSlot" nillable="true" type="tns:ArrayOfTimeSlot" />
+  <xs:complexType name="TimeSlot">
+    <xs:sequence>
+      <xs:element name="_x003C_action_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_duration_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_orderNr_x003E_k__BackingField" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeSlot" nillable="true" type="tns:TimeSlot" />
+  <xs:complexType name="ArrayOfRecipe">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Recipe" nillable="true" type="tns:Recipe" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRecipe" nillable="true" type="tns:ArrayOfRecipe" />
+</xs:schema>

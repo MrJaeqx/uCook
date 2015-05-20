@@ -1,0 +1,4 @@
+D:\PTT42\uCook\uCook\contract\bin\Debug\contract.dll
+D:\PTT42\uCook\uCook\contract\bin\Debug\contract.pdb
+D:\PTT42\uCook\uCook\contract\obj\Debug\contract.dll
+D:\PTT42\uCook\uCook\contract\obj\Debug\contract.pdb
