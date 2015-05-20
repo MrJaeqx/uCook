@@ -17,9 +17,9 @@ namespace uCookContract
         List<Recipe> findRecipe(string searchInfo);
 
         [OperationContract]
-        void addRecipe(Recipe recipe);
+        bool addRecipe(Recipe recipe);
 
         [OperationContract]
-        void removeRecipe(string naam);
+        bool removeRecipe(string naam);
     }
 }

@@ -27,5 +27,7 @@ namespace uCookContract
             appliances = new List<Appliance>();
             timeLine = new TimeLine();
         }
+
+
     }
 }
