@@ -28,6 +28,44 @@ namespace uCookContract
             timeLine = new TimeLine();
         }
 
+        bool addIngredient(Ingredient ingredient)
+        {
+            bool unique = true;
 
+            foreach (Ingredient i in ingredients)
+            {
+                if(ingredient.name == i.name)
+                {
+                    unique = false;
+                }
+            }
+
+            if(unique)
+            {
+                ingredients.Add(ingredient);
+            }
+
+            return unique;
+        }
+
+        bool addAppliance(Appliance appliance)
+        {
+            bool unique = true;
+
+            foreach (Appliance a in appliances)
+            {
+                if (appliance.name == a.name)
+                {
+                    unique = false;
+                }
+            }
+
+            if (unique)
+            {
+                appliances.Add(appliance);
+            }
+
+            return unique;
+        }
     }
 }
