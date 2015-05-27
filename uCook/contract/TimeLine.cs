@@ -9,7 +9,7 @@ namespace uCookContract
     [Serializable]
     public class TimeLine
     {
-        public List<TimeSlot> timeLine { get; private set; }
+        public List<TimeSlot> timeSlots { get; private set; }
         public int currentSlot { get; private set; }
 
         public int ammountTimeSlots { get; private set; }
@@ -18,14 +18,14 @@ namespace uCookContract
         {
             currentSlot = 0;
             ammountTimeSlots = 0;
-            timeLine = new List<TimeSlot>();
+            timeSlots = new List<TimeSlot>();
         }
 
         public void addTimeSlot(string action, int duration)
         {
             TimeSlot ts = new TimeSlot(ammountTimeSlots, duration, action);
             ammountTimeSlots++;
-            timeLine.Add(ts);
+            timeSlots.Add(ts);
         }
 
         public void nextSlot()
@@ -35,7 +35,7 @@ namespace uCookContract
 
         public TimeSlot getAction()
         {
-            return timeLine[currentSlot];
+            return timeSlots[currentSlot];
         }
     }
 }

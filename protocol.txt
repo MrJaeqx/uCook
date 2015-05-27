@@ -1,0 +1,8 @@
+Beginmarker: #
+tussenmarker: :
+endmarker: %
+
+appliances:
+"uCook Kookpan"
+"uCook Braadpan"
+"uCook Waterkoker"

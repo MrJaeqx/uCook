@@ -30,7 +30,7 @@ namespace uCookContract
 
         public void setTotalTime()
         {
-            foreach (TimeSlot t in timeLine.timeLine)
+            foreach (TimeSlot t in timeLine.timeSlots)
             {
                 totalTime += t.duration;
             }

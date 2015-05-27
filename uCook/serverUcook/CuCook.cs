@@ -75,7 +75,7 @@ namespace serverUcook
                             result.Add(r);
                         }
                     }
-                    foreach (TimeSlot t in r.timeLine.timeLine)
+                    foreach (TimeSlot t in r.timeLine.timeSlots)
                     {
                         if (t.action.Contains(searchInfo) && !result.Contains(r))
                         {

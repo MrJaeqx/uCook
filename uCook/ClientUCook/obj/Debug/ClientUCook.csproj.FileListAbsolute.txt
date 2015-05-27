@@ -20,3 +20,4 @@ C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.Prop
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.csproj.GenerateResource.Cache
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.exe
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.pdb
+C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.addScreen.resources
