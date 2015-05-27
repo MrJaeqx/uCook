@@ -13,6 +13,8 @@ namespace Voorbeeldje
 {
     public partial class Form1 : Form
     {
+
+        bool arduinoButton = false;
         /// <summary>
         /// The speed of the serial connection (bytes per second).
         /// TODO: make sure that the speed in the Arduino program is set to the same value!
@@ -103,6 +105,32 @@ namespace Voorbeeldje
             //  - Sliders have a 'Value' property which can be used to get/set the position of the slider.
             
             // insert train message handling here
+            lblRecv.Text = "Received: " + message;
+            if (message.Contains("okr"))
+            {
+                this.BackColor = System.Drawing.Color.Red;
+            }
+
+            if (message.Contains("okb"))
+            {
+                this.BackColor = System.Drawing.Color.Blue;
+            }
+
+            if (message.Contains("okg"))
+            {
+                this.BackColor = System.Drawing.Color.Green;
+            }
+
+            if (message.Contains("off"))
+            {
+                this.BackColor = System.Drawing.Color.Gray;
+            }
+
+            if (message.Contains("button"))
+            {
+                btnArduino.Enabled = arduinoButton;
+                arduinoButton = !arduinoButton;
+            }
         }
 
         /// <summary>
@@ -238,6 +266,12 @@ namespace Voorbeeldje
                     Debug.WriteLine("Could not read from serial port: " + exception.Message);
                 }
             }
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            string message = messageBeginMarker + tbSend.Text + messageEndMarker;
+            SendMessage(message);
         }
     }
 }

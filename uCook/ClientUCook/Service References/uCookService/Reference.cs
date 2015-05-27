@@ -9,431 +9,29 @@
 //------------------------------------------------------------------------------
 
 namespace ClientUCook.uCookService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Recipe", Namespace="http://schemas.datacontract.org/2004/07/uCookContract")]
-    [System.SerializableAttribute()]
-    public partial class Recipe : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IDk__BackingFieldField;
-        
-        private ClientUCook.uCookService.Appliance[] appliancesk__BackingFieldField;
-        
-        private ClientUCook.uCookService.Ingredient[] ingredientsk__BackingFieldField;
-        
-        private string namek__BackingFieldField;
-        
-        private ClientUCook.uCookService.TimeLine timeLinek__BackingFieldField;
-        
-        private int totalTimek__BackingFieldField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<ID>k__BackingField", IsRequired=true)]
-        public int IDk__BackingField {
-            get {
-                return this.IDk__BackingFieldField;
-            }
-            set {
-                if ((this.IDk__BackingFieldField.Equals(value) != true)) {
-                    this.IDk__BackingFieldField = value;
-                    this.RaisePropertyChanged("IDk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<appliances>k__BackingField", IsRequired=true)]
-        public ClientUCook.uCookService.Appliance[] appliancesk__BackingField {
-            get {
-                return this.appliancesk__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.appliancesk__BackingFieldField, value) != true)) {
-                    this.appliancesk__BackingFieldField = value;
-                    this.RaisePropertyChanged("appliancesk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<ingredients>k__BackingField", IsRequired=true)]
-        public ClientUCook.uCookService.Ingredient[] ingredientsk__BackingField {
-            get {
-                return this.ingredientsk__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ingredientsk__BackingFieldField, value) != true)) {
-                    this.ingredientsk__BackingFieldField = value;
-                    this.RaisePropertyChanged("ingredientsk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<name>k__BackingField", IsRequired=true)]
-        public string namek__BackingField {
-            get {
-                return this.namek__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.namek__BackingFieldField, value) != true)) {
-                    this.namek__BackingFieldField = value;
-                    this.RaisePropertyChanged("namek__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<timeLine>k__BackingField", IsRequired=true)]
-        public ClientUCook.uCookService.TimeLine timeLinek__BackingField {
-            get {
-                return this.timeLinek__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.timeLinek__BackingFieldField, value) != true)) {
-                    this.timeLinek__BackingFieldField = value;
-                    this.RaisePropertyChanged("timeLinek__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<totalTime>k__BackingField", IsRequired=true)]
-        public int totalTimek__BackingField {
-            get {
-                return this.totalTimek__BackingFieldField;
-            }
-            set {
-                if ((this.totalTimek__BackingFieldField.Equals(value) != true)) {
-                    this.totalTimek__BackingFieldField = value;
-                    this.RaisePropertyChanged("totalTimek__BackingField");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TimeLine", Namespace="http://schemas.datacontract.org/2004/07/uCookContract")]
-    [System.SerializableAttribute()]
-    public partial class TimeLine : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int ammountTimeSlotsk__BackingFieldField;
-        
-        private int currentSlotk__BackingFieldField;
-        
-        private ClientUCook.uCookService.TimeSlot[] timeLinek__BackingFieldField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<ammountTimeSlots>k__BackingField", IsRequired=true)]
-        public int ammountTimeSlotsk__BackingField {
-            get {
-                return this.ammountTimeSlotsk__BackingFieldField;
-            }
-            set {
-                if ((this.ammountTimeSlotsk__BackingFieldField.Equals(value) != true)) {
-                    this.ammountTimeSlotsk__BackingFieldField = value;
-                    this.RaisePropertyChanged("ammountTimeSlotsk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<currentSlot>k__BackingField", IsRequired=true)]
-        public int currentSlotk__BackingField {
-            get {
-                return this.currentSlotk__BackingFieldField;
-            }
-            set {
-                if ((this.currentSlotk__BackingFieldField.Equals(value) != true)) {
-                    this.currentSlotk__BackingFieldField = value;
-                    this.RaisePropertyChanged("currentSlotk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<timeLine>k__BackingField", IsRequired=true)]
-        public ClientUCook.uCookService.TimeSlot[] timeLinek__BackingField {
-            get {
-                return this.timeLinek__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.timeLinek__BackingFieldField, value) != true)) {
-                    this.timeLinek__BackingFieldField = value;
-                    this.RaisePropertyChanged("timeLinek__BackingField");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Appliance", Namespace="http://schemas.datacontract.org/2004/07/uCookContract")]
-    [System.SerializableAttribute()]
-    public partial class Appliance : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IDk__BackingFieldField;
-        
-        private string namek__BackingFieldField;
-        
-        private double pricek__BackingFieldField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<ID>k__BackingField", IsRequired=true)]
-        public int IDk__BackingField {
-            get {
-                return this.IDk__BackingFieldField;
-            }
-            set {
-                if ((this.IDk__BackingFieldField.Equals(value) != true)) {
-                    this.IDk__BackingFieldField = value;
-                    this.RaisePropertyChanged("IDk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<name>k__BackingField", IsRequired=true)]
-        public string namek__BackingField {
-            get {
-                return this.namek__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.namek__BackingFieldField, value) != true)) {
-                    this.namek__BackingFieldField = value;
-                    this.RaisePropertyChanged("namek__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<price>k__BackingField", IsRequired=true)]
-        public double pricek__BackingField {
-            get {
-                return this.pricek__BackingFieldField;
-            }
-            set {
-                if ((this.pricek__BackingFieldField.Equals(value) != true)) {
-                    this.pricek__BackingFieldField = value;
-                    this.RaisePropertyChanged("pricek__BackingField");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Ingredient", Namespace="http://schemas.datacontract.org/2004/07/uCookContract")]
-    [System.SerializableAttribute()]
-    public partial class Ingredient : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private string amountk__BackingFieldField;
-        
-        private string namek__BackingFieldField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<amount>k__BackingField", IsRequired=true)]
-        public string amountk__BackingField {
-            get {
-                return this.amountk__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.amountk__BackingFieldField, value) != true)) {
-                    this.amountk__BackingFieldField = value;
-                    this.RaisePropertyChanged("amountk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<name>k__BackingField", IsRequired=true)]
-        public string namek__BackingField {
-            get {
-                return this.namek__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.namek__BackingFieldField, value) != true)) {
-                    this.namek__BackingFieldField = value;
-                    this.RaisePropertyChanged("namek__BackingField");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TimeSlot", Namespace="http://schemas.datacontract.org/2004/07/uCookContract")]
-    [System.SerializableAttribute()]
-    public partial class TimeSlot : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private string actionk__BackingFieldField;
-        
-        private int durationk__BackingFieldField;
-        
-        private int orderNrk__BackingFieldField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<action>k__BackingField", IsRequired=true)]
-        public string actionk__BackingField {
-            get {
-                return this.actionk__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.actionk__BackingFieldField, value) != true)) {
-                    this.actionk__BackingFieldField = value;
-                    this.RaisePropertyChanged("actionk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<duration>k__BackingField", IsRequired=true)]
-        public int durationk__BackingField {
-            get {
-                return this.durationk__BackingFieldField;
-            }
-            set {
-                if ((this.durationk__BackingFieldField.Equals(value) != true)) {
-                    this.durationk__BackingFieldField = value;
-                    this.RaisePropertyChanged("durationk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<orderNr>k__BackingField", IsRequired=true)]
-        public int orderNrk__BackingField {
-            get {
-                return this.orderNrk__BackingFieldField;
-            }
-            set {
-                if ((this.orderNrk__BackingFieldField.Equals(value) != true)) {
-                    this.orderNrk__BackingFieldField = value;
-                    this.RaisePropertyChanged("orderNrk__BackingField");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="uCookContract", ConfigurationName="uCookService.IRecipes")]
     public interface IRecipes {
         
         [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/sendRecipe", ReplyAction="uCookContract/IRecipes/sendRecipeResponse")]
-        ClientUCook.uCookService.Recipe sendRecipe(string name);
+        uCookContract.Recipe sendRecipe(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/sendRecipe", ReplyAction="uCookContract/IRecipes/sendRecipeResponse")]
-        System.Threading.Tasks.Task<ClientUCook.uCookService.Recipe> sendRecipeAsync(string name);
+        System.Threading.Tasks.Task<uCookContract.Recipe> sendRecipeAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/findRecipe", ReplyAction="uCookContract/IRecipes/findRecipeResponse")]
-        ClientUCook.uCookService.Recipe[] findRecipe(string searchInfo);
+        System.Collections.Generic.List<uCookContract.Recipe> findRecipe(string searchInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/findRecipe", ReplyAction="uCookContract/IRecipes/findRecipeResponse")]
-        System.Threading.Tasks.Task<ClientUCook.uCookService.Recipe[]> findRecipeAsync(string searchInfo);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<uCookContract.Recipe>> findRecipeAsync(string searchInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/addRecipe", ReplyAction="uCookContract/IRecipes/addRecipeResponse")]
-        bool addRecipe(ClientUCook.uCookService.Recipe recipe);
+        bool addRecipe(uCookContract.Recipe recipe);
         
         [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/addRecipe", ReplyAction="uCookContract/IRecipes/addRecipeResponse")]
-        System.Threading.Tasks.Task<bool> addRecipeAsync(ClientUCook.uCookService.Recipe recipe);
+        System.Threading.Tasks.Task<bool> addRecipeAsync(uCookContract.Recipe recipe);
         
         [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/removeRecipe", ReplyAction="uCookContract/IRecipes/removeRecipeResponse")]
         bool removeRecipe(string naam);
@@ -469,27 +67,27 @@ namespace ClientUCook.uCookService {
                 base(binding, remoteAddress) {
         }
         
-        public ClientUCook.uCookService.Recipe sendRecipe(string name) {
+        public uCookContract.Recipe sendRecipe(string name) {
             return base.Channel.sendRecipe(name);
         }
         
-        public System.Threading.Tasks.Task<ClientUCook.uCookService.Recipe> sendRecipeAsync(string name) {
+        public System.Threading.Tasks.Task<uCookContract.Recipe> sendRecipeAsync(string name) {
             return base.Channel.sendRecipeAsync(name);
         }
         
-        public ClientUCook.uCookService.Recipe[] findRecipe(string searchInfo) {
+        public System.Collections.Generic.List<uCookContract.Recipe> findRecipe(string searchInfo) {
             return base.Channel.findRecipe(searchInfo);
         }
         
-        public System.Threading.Tasks.Task<ClientUCook.uCookService.Recipe[]> findRecipeAsync(string searchInfo) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<uCookContract.Recipe>> findRecipeAsync(string searchInfo) {
             return base.Channel.findRecipeAsync(searchInfo);
         }
         
-        public bool addRecipe(ClientUCook.uCookService.Recipe recipe) {
+        public bool addRecipe(uCookContract.Recipe recipe) {
             return base.Channel.addRecipe(recipe);
         }
         
-        public System.Threading.Tasks.Task<bool> addRecipeAsync(ClientUCook.uCookService.Recipe recipe) {
+        public System.Threading.Tasks.Task<bool> addRecipeAsync(uCookContract.Recipe recipe) {
             return base.Channel.addRecipeAsync(recipe);
         }
         
