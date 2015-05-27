@@ -28,7 +28,15 @@ namespace uCookContract
             timeLine = new TimeLine();
         }
 
-        bool addIngredient(Ingredient ingredient)
+        public void setTotalTime()
+        {
+            foreach (TimeSlot t in timeLine.timeLine)
+            {
+                totalTime += t.duration;
+            }
+        }
+
+        public bool addIngredient(Ingredient ingredient)
         {
             bool unique = true;
 
@@ -48,7 +56,7 @@ namespace uCookContract
             return unique;
         }
 
-        bool addAppliance(Appliance appliance)
+        public bool addAppliance(Appliance appliance)
         {
             bool unique = true;
 
