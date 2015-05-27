@@ -14,3 +14,6 @@ C:\Users\Tim\Documents\GitHub\uCook\uCook\ConsoleApplication1\bin\Debug\contract
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ConsoleApplication1\obj\Debug\serverUcook.csprojResolveAssemblyReference.cache
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ConsoleApplication1\obj\Debug\serverUcook.exe
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ConsoleApplication1\obj\Debug\serverUcook.pdb
+C:\Users\Tim\Documents\GitHub\uCook\uCook\serverUcook\bin\Debug\serverUcook.exe.config
+C:\Users\Tim\Documents\GitHub\uCook\uCook\serverUcook\obj\Debug\serverUcook.exe
+C:\Users\Tim\Documents\GitHub\uCook\uCook\serverUcook\obj\Debug\serverUcook.pdb

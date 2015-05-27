@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "contract", "contract\contract.csproj", "{A8CACFB0-EEA5-4B2A-9810-6C97B9118AF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serverUcook", "ConsoleApplication1\serverUcook.csproj", "{E2C093FD-1E37-40AF-A2B0-6AD35BE35D2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serverUcook", "serverUcook\serverUcook.csproj", "{E2C093FD-1E37-40AF-A2B0-6AD35BE35D2C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientUCook", "ClientUCook\ClientUCook.csproj", "{C13AA599-503B-4FB7-A0F1-DBC615468275}"
 EndProject
