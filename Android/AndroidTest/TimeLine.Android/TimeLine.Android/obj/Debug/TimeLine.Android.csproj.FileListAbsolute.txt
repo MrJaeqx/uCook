@@ -1,0 +1,14 @@
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\TimeLine.Android.csprojResolveAssemblyReference.cache
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\bin\Debug\TimeLine.Android.dll
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\bin\Debug\TimeLine.Android.pdb
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\bin\Debug\TimeLine.Android.dll.mdb
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\bin\Debug\TimeLine.Android.apk
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\bin\Debug\TimeLine.Android-Signed.apk
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\TimeLine.Android.dll
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\TimeLine.Android.pdb
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\android\bin\TimeLine.Android.apk
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\res\layout\main.xml
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\res\values\strings.xml
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\res\drawable\icon.png
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\R.cs.flag
+D:\AndroidTest\TimeLine.Android\TimeLine.Android\obj\Debug\uploadflags.txt
