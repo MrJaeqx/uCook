@@ -65,7 +65,7 @@ namespace Voorbeeldje
             }
             else
             {
-                String port = "COM3";
+                String port = "COM4";
                 try
                 {
                     serialPort.PortName = port;
