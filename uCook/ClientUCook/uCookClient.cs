@@ -47,17 +47,40 @@ namespace ClientUCook
             proxy = new uCookService.RecipesClient();
 
             //arduino connection init
-            serialPort = new SerialPort("COM3", connectionSpeed);
+            serialPort = new SerialPort("COM4", connectionSpeed);
             messageBuilder = new MessageBuilder(messageBeginMarker, messageEndMarker);
+
+            //opening port
+            if (serialPort.IsOpen)
+            {
+                readMessageTimer.Enabled = false;
+                serialPort.Close();
+            }
+            else
+            {
+                try
+                {
+                    serialPort.Open();
+                    if (serialPort.IsOpen)
+                    {
+                        serialPort.DiscardInBuffer();
+                        serialPort.DiscardOutBuffer();
+                    }
+                    readMessageTimer.Enabled = true;
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("Could not connect to the given serial port: " + exception.Message);
+                }
+            }
         }
 
         //////////////////////
         //message receiving
         /////////////////////
-        private void messageReceiveTimer_Tick(object sender, EventArgs e)
+        private void readMessageTimer_Tick(object sender, EventArgs e)
         {
-            if (serialPort.IsOpen
-                && serialPort.BytesToRead > 0)
+            if (serialPort.IsOpen && serialPort.BytesToRead > 0)
             {
                 try
                 {
@@ -142,8 +165,7 @@ namespace ClientUCook
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            string message = messageBeginMarker + "results" + messageValueMarker + lbResults.Items.Count + messageEndMarker;
-            SendMessage(message);
+            SendMessage("#" + tbTest.Text + "%");
         }
 
         //////////////////////

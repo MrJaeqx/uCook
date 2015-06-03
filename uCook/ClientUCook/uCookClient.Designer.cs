@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.findRecipeBtn = new System.Windows.Forms.Button();
             this.addRecipeBtn = new System.Windows.Forms.Button();
             this.removeRecipeBtn = new System.Windows.Forms.Button();
             this.lbResults = new System.Windows.Forms.ListBox();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.readMessageTimer = new System.Windows.Forms.Timer(this.components);
+            this.tbTest = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // findRecipeBtn
@@ -97,11 +100,25 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
+            // readMessageTimer
+            // 
+            this.readMessageTimer.Interval = 15;
+            this.readMessageTimer.Tick += new System.EventHandler(this.readMessageTimer_Tick);
+            // 
+            // tbTest
+            // 
+            this.tbTest.Location = new System.Drawing.Point(199, 112);
+            this.tbTest.Margin = new System.Windows.Forms.Padding(2);
+            this.tbTest.Name = "tbTest";
+            this.tbTest.Size = new System.Drawing.Size(95, 20);
+            this.tbTest.TabIndex = 7;
+            // 
             // uCookClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(316, 264);
+            this.Controls.Add(this.tbTest);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lbResults);
@@ -126,6 +143,8 @@
         private System.Windows.Forms.ListBox lbResults;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Timer readMessageTimer;
+        private System.Windows.Forms.TextBox tbTest;
     }
 }
 
