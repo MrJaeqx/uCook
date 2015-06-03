@@ -29,21 +29,30 @@
         private void InitializeComponent()
         {
             this.lblName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.lbAppliances = new System.Windows.Forms.ListBox();
             this.gbAppliances = new System.Windows.Forms.GroupBox();
             this.cbAppliances = new System.Windows.Forms.ComboBox();
             this.gbIngedients = new System.Windows.Forms.GroupBox();
+            this.lbAmounts = new System.Windows.Forms.ListBox();
+            this.btnAddIngredient = new System.Windows.Forms.Button();
+            this.lbIngredients = new System.Windows.Forms.ListBox();
             this.tbAmount = new System.Windows.Forms.TextBox();
             this.tbIngredient = new System.Windows.Forms.TextBox();
             this.lblAmount = new System.Windows.Forms.Label();
             this.lblIngredient = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
-            this.lbIngredients = new System.Windows.Forms.ListBox();
-            this.btnAddIngredient = new System.Windows.Forms.Button();
-            this.lbAmounts = new System.Windows.Forms.ListBox();
+            this.gbActions = new System.Windows.Forms.GroupBox();
+            this.tbDuration = new System.Windows.Forms.TextBox();
+            this.tbAction = new System.Windows.Forms.TextBox();
+            this.btnAddAction = new System.Windows.Forms.Button();
+            this.lblDuration = new System.Windows.Forms.Label();
+            this.lblAction = new System.Windows.Forms.Label();
+            this.lbDurations = new System.Windows.Forms.ListBox();
+            this.lbActions = new System.Windows.Forms.ListBox();
             this.gbAppliances.SuspendLayout();
             this.gbIngedients.SuspendLayout();
+            this.gbActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
@@ -55,12 +64,12 @@
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Recipe name";
             // 
-            // textBox1
+            // tbName
             // 
-            this.textBox1.Location = new System.Drawing.Point(90, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(334, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbName.Location = new System.Drawing.Point(90, 13);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(334, 20);
+            this.tbName.TabIndex = 1;
             // 
             // lbAppliances
             // 
@@ -86,9 +95,9 @@
             this.cbAppliances.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAppliances.FormattingEnabled = true;
             this.cbAppliances.Items.AddRange(new object[] {
-            "uCook kookpan",
-            "uCook braadpan",
-            "uCook waterkoker"});
+            "uCook Kookpan",
+            "uCook Braadpan",
+            "uCook Waterkoker"});
             this.cbAppliances.Location = new System.Drawing.Point(7, 20);
             this.cbAppliances.Name = "cbAppliances";
             this.cbAppliances.Size = new System.Drawing.Size(114, 21);
@@ -110,6 +119,32 @@
             this.gbIngedients.TabIndex = 4;
             this.gbIngedients.TabStop = false;
             this.gbIngedients.Text = "Ingedients";
+            // 
+            // lbAmounts
+            // 
+            this.lbAmounts.FormattingEnabled = true;
+            this.lbAmounts.Location = new System.Drawing.Point(201, 93);
+            this.lbAmounts.Name = "lbAmounts";
+            this.lbAmounts.Size = new System.Drawing.Size(67, 108);
+            this.lbAmounts.TabIndex = 6;
+            // 
+            // btnAddIngredient
+            // 
+            this.btnAddIngredient.Location = new System.Drawing.Point(6, 64);
+            this.btnAddIngredient.Name = "btnAddIngredient";
+            this.btnAddIngredient.Size = new System.Drawing.Size(262, 23);
+            this.btnAddIngredient.TabIndex = 5;
+            this.btnAddIngredient.Text = "add ingredient";
+            this.btnAddIngredient.UseVisualStyleBackColor = true;
+            this.btnAddIngredient.Click += new System.EventHandler(this.btnAddIngredient_Click);
+            // 
+            // lbIngredients
+            // 
+            this.lbIngredients.FormattingEnabled = true;
+            this.lbIngredients.Location = new System.Drawing.Point(6, 95);
+            this.lbIngredients.Name = "lbIngredients";
+            this.lbIngredients.Size = new System.Drawing.Size(189, 108);
+            this.lbIngredients.TabIndex = 4;
             // 
             // tbAmount
             // 
@@ -151,48 +186,104 @@
             this.btnConfirm.TabIndex = 5;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // lbIngredients
+            // gbActions
             // 
-            this.lbIngredients.FormattingEnabled = true;
-            this.lbIngredients.Location = new System.Drawing.Point(6, 95);
-            this.lbIngredients.Name = "lbIngredients";
-            this.lbIngredients.Size = new System.Drawing.Size(189, 108);
-            this.lbIngredients.TabIndex = 4;
+            this.gbActions.Controls.Add(this.tbDuration);
+            this.gbActions.Controls.Add(this.tbAction);
+            this.gbActions.Controls.Add(this.btnAddAction);
+            this.gbActions.Controls.Add(this.lblDuration);
+            this.gbActions.Controls.Add(this.lblAction);
+            this.gbActions.Controls.Add(this.lbDurations);
+            this.gbActions.Controls.Add(this.lbActions);
+            this.gbActions.Location = new System.Drawing.Point(430, 13);
+            this.gbActions.Name = "gbActions";
+            this.gbActions.Size = new System.Drawing.Size(308, 236);
+            this.gbActions.TabIndex = 6;
+            this.gbActions.TabStop = false;
+            this.gbActions.Text = "Action list";
             // 
-            // btnAddIngredient
+            // tbDuration
             // 
-            this.btnAddIngredient.Location = new System.Drawing.Point(10, 64);
-            this.btnAddIngredient.Name = "btnAddIngredient";
-            this.btnAddIngredient.Size = new System.Drawing.Size(258, 23);
-            this.btnAddIngredient.TabIndex = 5;
-            this.btnAddIngredient.Text = "add ingredient";
-            this.btnAddIngredient.UseVisualStyleBackColor = true;
+            this.tbDuration.Location = new System.Drawing.Point(221, 32);
+            this.tbDuration.Multiline = true;
+            this.tbDuration.Name = "tbDuration";
+            this.tbDuration.Size = new System.Drawing.Size(81, 52);
+            this.tbDuration.TabIndex = 6;
             // 
-            // lbAmounts
+            // tbAction
             // 
-            this.lbAmounts.FormattingEnabled = true;
-            this.lbAmounts.Location = new System.Drawing.Point(201, 93);
-            this.lbAmounts.Name = "lbAmounts";
-            this.lbAmounts.Size = new System.Drawing.Size(67, 108);
-            this.lbAmounts.TabIndex = 6;
+            this.tbAction.Location = new System.Drawing.Point(9, 33);
+            this.tbAction.Multiline = true;
+            this.tbAction.Name = "tbAction";
+            this.tbAction.Size = new System.Drawing.Size(206, 52);
+            this.tbAction.TabIndex = 5;
+            // 
+            // btnAddAction
+            // 
+            this.btnAddAction.Location = new System.Drawing.Point(6, 90);
+            this.btnAddAction.Name = "btnAddAction";
+            this.btnAddAction.Size = new System.Drawing.Size(296, 23);
+            this.btnAddAction.TabIndex = 4;
+            this.btnAddAction.Text = "add Action";
+            this.btnAddAction.UseVisualStyleBackColor = true;
+            this.btnAddAction.Click += new System.EventHandler(this.btnAddAction_Click);
+            // 
+            // lblDuration
+            // 
+            this.lblDuration.AutoSize = true;
+            this.lblDuration.Location = new System.Drawing.Point(211, 16);
+            this.lblDuration.Name = "lblDuration";
+            this.lblDuration.Size = new System.Drawing.Size(97, 13);
+            this.lblDuration.TabIndex = 3;
+            this.lblDuration.Text = "Duration in minutes";
+            // 
+            // lblAction
+            // 
+            this.lblAction.AutoSize = true;
+            this.lblAction.Location = new System.Drawing.Point(6, 16);
+            this.lblAction.Name = "lblAction";
+            this.lblAction.Size = new System.Drawing.Size(37, 13);
+            this.lblAction.TabIndex = 2;
+            this.lblAction.Text = "Action";
+            // 
+            // lbDurations
+            // 
+            this.lbDurations.FormattingEnabled = true;
+            this.lbDurations.Location = new System.Drawing.Point(221, 120);
+            this.lbDurations.Name = "lbDurations";
+            this.lbDurations.Size = new System.Drawing.Size(81, 108);
+            this.lbDurations.TabIndex = 1;
+            // 
+            // lbActions
+            // 
+            this.lbActions.FormattingEnabled = true;
+            this.lbActions.Location = new System.Drawing.Point(6, 120);
+            this.lbActions.Name = "lbActions";
+            this.lbActions.Size = new System.Drawing.Size(209, 108);
+            this.lbActions.TabIndex = 0;
             // 
             // AddScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 306);
+            this.ClientSize = new System.Drawing.Size(750, 306);
+            this.Controls.Add(this.gbActions);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.gbIngedients);
             this.Controls.Add(this.gbAppliances);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbName);
             this.Controls.Add(this.lblName);
             this.Name = "AddScreen";
             this.Text = "addScreen";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddScreen_FormClosing);
             this.gbAppliances.ResumeLayout(false);
             this.gbIngedients.ResumeLayout(false);
             this.gbIngedients.PerformLayout();
+            this.gbActions.ResumeLayout(false);
+            this.gbActions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +292,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.ListBox lbAppliances;
         private System.Windows.Forms.GroupBox gbAppliances;
         private System.Windows.Forms.ComboBox cbAppliances;
@@ -214,5 +305,13 @@
         private System.Windows.Forms.ListBox lbAmounts;
         private System.Windows.Forms.Button btnAddIngredient;
         private System.Windows.Forms.ListBox lbIngredients;
+        private System.Windows.Forms.GroupBox gbActions;
+        private System.Windows.Forms.TextBox tbDuration;
+        private System.Windows.Forms.TextBox tbAction;
+        private System.Windows.Forms.Button btnAddAction;
+        private System.Windows.Forms.Label lblDuration;
+        private System.Windows.Forms.Label lblAction;
+        private System.Windows.Forms.ListBox lbDurations;
+        private System.Windows.Forms.ListBox lbActions;
     }
 }

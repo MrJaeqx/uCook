@@ -9,22 +9,19 @@ namespace uCookContract
     [Serializable]
     public class Recipe
     {
-        public int ID { get; private set; }
-        public string name { get; private set; }
+        public string name { get; set; }
         public int totalTime { get; private set; }     //totale time in minutes
         public List<Ingredient> ingredients { get; private set; }
-        public List<Appliance> appliances { get; private set; }
+        public List<String> appliances { get; private set; }
         public TimeLine timeLine { get; private set; }
 
-        public Recipe(int ID, string name)
+        public Recipe()
         {
-            this.ID = ID;
-            this.name = name;
-
+            name = "";
             totalTime = 0;
 
             ingredients = new List<Ingredient>();
-            appliances = new List<Appliance>();
+            appliances = new List<String>();
             timeLine = new TimeLine();
         }
 
@@ -56,13 +53,13 @@ namespace uCookContract
             return unique;
         }
 
-        public bool addAppliance(Appliance appliance)
+        public bool addAppliance(String appliance)
         {
             bool unique = true;
 
-            foreach (Appliance a in appliances)
+            foreach (String a in appliances)
             {
-                if (appliance.name == a.name)
+                if (appliance == a)
                 {
                     unique = false;
                 }
