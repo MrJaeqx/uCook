@@ -21,3 +21,4 @@ C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\bin\Debug\contract.dll
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\bin\Debug\contract.pdb
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.exe
 C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.pdb
+C:\Users\Tim\Documents\GitHub\uCook\uCook\ClientUCook\obj\Debug\ClientUCook.TimeLineClient.resources

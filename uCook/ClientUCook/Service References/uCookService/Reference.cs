@@ -38,6 +38,12 @@ namespace ClientUCook.uCookService {
         
         [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/removeRecipe", ReplyAction="uCookContract/IRecipes/removeRecipeResponse")]
         System.Threading.Tasks.Task<bool> removeRecipeAsync(string naam);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/getAvailableAppliances", ReplyAction="uCookContract/IRecipes/getAvailableAppliancesResponse")]
+        System.Collections.Generic.List<uCookContract.Appliances> getAvailableAppliances();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="uCookContract/IRecipes/getAvailableAppliances", ReplyAction="uCookContract/IRecipes/getAvailableAppliancesResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<uCookContract.Appliances>> getAvailableAppliancesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -97,6 +103,14 @@ namespace ClientUCook.uCookService {
         
         public System.Threading.Tasks.Task<bool> removeRecipeAsync(string naam) {
             return base.Channel.removeRecipeAsync(naam);
+        }
+        
+        public System.Collections.Generic.List<uCookContract.Appliances> getAvailableAppliances() {
+            return base.Channel.getAvailableAppliances();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<uCookContract.Appliances>> getAvailableAppliancesAsync() {
+            return base.Channel.getAvailableAppliancesAsync();
         }
     }
 }

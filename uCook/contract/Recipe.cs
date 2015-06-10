@@ -12,7 +12,7 @@ namespace uCookContract
         public string name { get; set; }
         public int totalTime { get; private set; }     //totale time in minutes
         public List<Ingredient> ingredients { get; private set; }
-        public List<String> appliances { get; private set; }
+        public List<Appliances> appliances { get; private set; }
         public TimeLine timeLine { get; private set; }
 
         public Recipe()
@@ -21,7 +21,7 @@ namespace uCookContract
             totalTime = 0;
 
             ingredients = new List<Ingredient>();
-            appliances = new List<String>();
+            appliances = new List<Appliances>();
             timeLine = new TimeLine();
         }
 
@@ -53,11 +53,11 @@ namespace uCookContract
             return unique;
         }
 
-        public bool addAppliance(String appliance)
+        public bool addAppliance(Appliances appliance)
         {
             bool unique = true;
 
-            foreach (String a in appliances)
+            foreach (Appliances a in appliances)
             {
                 if (appliance == a)
                 {
@@ -72,5 +72,13 @@ namespace uCookContract
 
             return unique;
         }
+    }
+
+    [Serializable]
+    public enum Appliances
+    {
+        uCook_Kookpan = 0,
+        uCook_Braadpan = 1,
+        uCook_Waterkoker = 2
     }
 }

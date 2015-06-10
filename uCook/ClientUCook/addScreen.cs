@@ -14,27 +14,15 @@ namespace ClientUCook
     {
         private uCookContract.Recipe recipe;
 
-        public AddScreen()
+        public AddScreen(List<uCookContract.Appliances> appliances)
         {
             InitializeComponent();
             recipe = new uCookContract.Recipe();
-        }
 
-        private void Appliances_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            bool unique = true;
-
-            for (int i = 0; i < lbAppliances.Items.Count; i++)
-            {  
-                if(lbAppliances.Items[i].ToString() == cbAppliances.SelectedItem.ToString())
-                {
-                    unique = false;
-                }
-            }
-
-            if(unique)
+            
+            foreach(uCookContract.Appliances a in appliances)
             {
-                lbAppliances.Items.Add(cbAppliances.SelectedItem);
+                cbAppliances.Items.Add(a);
             }
         }
 
@@ -65,7 +53,16 @@ namespace ClientUCook
             }
             else if(String.IsNullOrWhiteSpace(tbDuration.Text))
             {
-                MessageBox.Show("Please enter a Duration in minutes for this action.");
+                lbDurations.Items.Add(0);
+                lbActions.Items.Add(tbAction.Text);
+                tbAction.Text = "";
+                tbDuration.Text = "";
+                lbAppliances.Items.Add(cbAppliances.SelectedItem);
+                cbAppliances.SelectedIndex = -1;
+            }
+            else if(cbAppliances.SelectedItem == null)
+            {
+                MessageBox.Show("Please select the required Appliance needed for this action.");
             }
             else
             {
@@ -75,10 +72,13 @@ namespace ClientUCook
                     lbActions.Items.Add(tbAction.Text);
                     tbAction.Text = "";
                     lbDurations.Items.Add(duration);
+                    tbDuration.Text = "";
+                    lbAppliances.Items.Add(cbAppliances.SelectedItem);
+                    cbAppliances.SelectedIndex = -1;
                 }
                 catch
                 {
-                    MessageBox.Show("Please enter a valid number for the duration.");
+                    MessageBox.Show("Please enter a valid number for the duration or leave blank.");
                 }
                 
             }
@@ -100,7 +100,10 @@ namespace ClientUCook
                 
                 for(int i = 0; i < lbAppliances.Items.Count; i++)
                 {
-                    recipe.addAppliance(lbAppliances.Items[0].ToString());
+                    if(!recipe.appliances.Contains((uCookContract.Appliances)lbAppliances.Items[i]))
+                    {
+                        recipe.addAppliance((uCookContract.Appliances)lbAppliances.Items[i]);
+                    }
                 }
                 for(int i = 0; i < lbIngredients.Items.Count; i++)
                 {
@@ -110,9 +113,10 @@ namespace ClientUCook
                 }
                 for(int i = 0; i < lbActions.Items.Count; i++)
                 {
-                    string a = lbActions.Items[i].ToString();
+                    string action = lbActions.Items[i].ToString();
                     int d = Convert.ToInt16(lbDurations.Items[i]);
-                    recipe.timeLine.addTimeSlot(a, d);
+                    uCookContract.Appliances app = (uCookContract.Appliances)lbAppliances.Items[i];
+                    recipe.timeLine.addTimeSlot(action, d, app);
                 }
                 recipe.setTotalTime();
 

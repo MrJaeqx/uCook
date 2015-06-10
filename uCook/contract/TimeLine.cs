@@ -21,9 +21,9 @@ namespace uCookContract
             timeLine = new List<TimeSlot>();
         }
 
-        public void addTimeSlot(string action, int duration)
+        public void addTimeSlot(string action, int duration, Appliances appliance)
         {
-            TimeSlot ts = new TimeSlot(ammountTimeSlots, duration, action);
+            TimeSlot ts = new TimeSlot(ammountTimeSlots, duration, action, appliance);
             ammountTimeSlots++;
             timeLine.Add(ts);
         }

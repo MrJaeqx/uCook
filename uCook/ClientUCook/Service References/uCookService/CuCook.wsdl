@@ -48,6 +48,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAvailableAppliances">
+      <soap12:operation soapAction="uCookContract/IRecipes/getAvailableAppliances" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CuCook">
     <wsdl:port name="WSHttpBinding_IRecipes" binding="tns:WSHttpBinding_IRecipes">

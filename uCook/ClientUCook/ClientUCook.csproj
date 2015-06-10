@@ -68,6 +68,12 @@
       <DependentUpon>AddScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBuilder.cs" />
+    <Compile Include="TimeLineClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimeLineClient.Designer.cs">
+      <DependentUpon>TimeLineClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="uCookClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </Compile>
     <EmbeddedResource Include="AddScreen.resx">
       <DependentUpon>AddScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeLineClient.resx">
+      <DependentUpon>TimeLineClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="uCookClient.resx">
       <DependentUpon>uCookClient.cs</DependentUpon>

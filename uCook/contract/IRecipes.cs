@@ -21,5 +21,8 @@ namespace uCookContract
 
         [OperationContract]
         bool removeRecipe(string naam);
+
+        [OperationContract]
+        List<Appliances> getAvailableAppliances();
     }
 }

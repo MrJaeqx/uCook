@@ -31,7 +31,6 @@
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lbAppliances = new System.Windows.Forms.ListBox();
-            this.gbAppliances = new System.Windows.Forms.GroupBox();
             this.cbAppliances = new System.Windows.Forms.ComboBox();
             this.gbIngedients = new System.Windows.Forms.GroupBox();
             this.lbAmounts = new System.Windows.Forms.ListBox();
@@ -43,14 +42,14 @@
             this.lblIngredient = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.gbActions = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.tbDuration = new System.Windows.Forms.TextBox();
             this.tbAction = new System.Windows.Forms.TextBox();
             this.btnAddAction = new System.Windows.Forms.Button();
             this.lblDuration = new System.Windows.Forms.Label();
-            this.lblAction = new System.Windows.Forms.Label();
             this.lbDurations = new System.Windows.Forms.ListBox();
+            this.lblAction = new System.Windows.Forms.Label();
             this.lbActions = new System.Windows.Forms.ListBox();
-            this.gbAppliances.SuspendLayout();
             this.gbIngedients.SuspendLayout();
             this.gbActions.SuspendLayout();
             this.SuspendLayout();
@@ -68,27 +67,16 @@
             // 
             this.tbName.Location = new System.Drawing.Point(90, 13);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(334, 20);
+            this.tbName.Size = new System.Drawing.Size(648, 20);
             this.tbName.TabIndex = 1;
             // 
             // lbAppliances
             // 
             this.lbAppliances.FormattingEnabled = true;
-            this.lbAppliances.Location = new System.Drawing.Point(7, 44);
+            this.lbAppliances.Location = new System.Drawing.Point(276, 133);
             this.lbAppliances.Name = "lbAppliances";
-            this.lbAppliances.Size = new System.Drawing.Size(114, 160);
+            this.lbAppliances.Size = new System.Drawing.Size(114, 108);
             this.lbAppliances.TabIndex = 2;
-            // 
-            // gbAppliances
-            // 
-            this.gbAppliances.Controls.Add(this.cbAppliances);
-            this.gbAppliances.Controls.Add(this.lbAppliances);
-            this.gbAppliances.Location = new System.Drawing.Point(16, 39);
-            this.gbAppliances.Name = "gbAppliances";
-            this.gbAppliances.Size = new System.Drawing.Size(127, 210);
-            this.gbAppliances.TabIndex = 3;
-            this.gbAppliances.TabStop = false;
-            this.gbAppliances.Text = "Appliances";
             // 
             // cbAppliances
             // 
@@ -98,11 +86,10 @@
             "uCook Kookpan",
             "uCook Braadpan",
             "uCook Waterkoker"});
-            this.cbAppliances.Location = new System.Drawing.Point(7, 20);
+            this.cbAppliances.Location = new System.Drawing.Point(221, 80);
             this.cbAppliances.Name = "cbAppliances";
             this.cbAppliances.Size = new System.Drawing.Size(114, 21);
             this.cbAppliances.TabIndex = 3;
-            this.cbAppliances.SelectionChangeCommitted += new System.EventHandler(this.Appliances_SelectionChangeCommitted);
             // 
             // gbIngedients
             // 
@@ -113,7 +100,7 @@
             this.gbIngedients.Controls.Add(this.tbIngredient);
             this.gbIngedients.Controls.Add(this.lblAmount);
             this.gbIngedients.Controls.Add(this.lblIngredient);
-            this.gbIngedients.Location = new System.Drawing.Point(150, 40);
+            this.gbIngedients.Location = new System.Drawing.Point(16, 40);
             this.gbIngedients.Name = "gbIngedients";
             this.gbIngedients.Size = new System.Drawing.Size(274, 209);
             this.gbIngedients.TabIndex = 4;
@@ -190,26 +177,36 @@
             // 
             // gbActions
             // 
+            this.gbActions.Controls.Add(this.label1);
+            this.gbActions.Controls.Add(this.cbAppliances);
             this.gbActions.Controls.Add(this.tbDuration);
+            this.gbActions.Controls.Add(this.lbAppliances);
             this.gbActions.Controls.Add(this.tbAction);
             this.gbActions.Controls.Add(this.btnAddAction);
             this.gbActions.Controls.Add(this.lblDuration);
-            this.gbActions.Controls.Add(this.lblAction);
             this.gbActions.Controls.Add(this.lbDurations);
+            this.gbActions.Controls.Add(this.lblAction);
             this.gbActions.Controls.Add(this.lbActions);
-            this.gbActions.Location = new System.Drawing.Point(430, 13);
+            this.gbActions.Location = new System.Drawing.Point(296, 40);
             this.gbActions.Name = "gbActions";
-            this.gbActions.Size = new System.Drawing.Size(308, 236);
+            this.gbActions.Size = new System.Drawing.Size(442, 254);
             this.gbActions.TabIndex = 6;
             this.gbActions.TabStop = false;
             this.gbActions.Text = "Action list";
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(221, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 45);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Please select Appliance needed for this action.";
+            // 
             // tbDuration
             // 
-            this.tbDuration.Location = new System.Drawing.Point(221, 32);
-            this.tbDuration.Multiline = true;
+            this.tbDuration.Location = new System.Drawing.Point(341, 80);
             this.tbDuration.Name = "tbDuration";
-            this.tbDuration.Size = new System.Drawing.Size(81, 52);
+            this.tbDuration.Size = new System.Drawing.Size(95, 20);
             this.tbDuration.TabIndex = 6;
             // 
             // tbAction
@@ -217,14 +214,14 @@
             this.tbAction.Location = new System.Drawing.Point(9, 33);
             this.tbAction.Multiline = true;
             this.tbAction.Name = "tbAction";
-            this.tbAction.Size = new System.Drawing.Size(206, 52);
+            this.tbAction.Size = new System.Drawing.Size(206, 68);
             this.tbAction.TabIndex = 5;
             // 
             // btnAddAction
             // 
-            this.btnAddAction.Location = new System.Drawing.Point(6, 90);
+            this.btnAddAction.Location = new System.Drawing.Point(6, 107);
             this.btnAddAction.Name = "btnAddAction";
-            this.btnAddAction.Size = new System.Drawing.Size(296, 23);
+            this.btnAddAction.Size = new System.Drawing.Size(430, 23);
             this.btnAddAction.TabIndex = 4;
             this.btnAddAction.Text = "add Action";
             this.btnAddAction.UseVisualStyleBackColor = true;
@@ -232,12 +229,19 @@
             // 
             // lblDuration
             // 
-            this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(211, 16);
+            this.lblDuration.Location = new System.Drawing.Point(341, 29);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(97, 13);
+            this.lblDuration.Size = new System.Drawing.Size(95, 48);
             this.lblDuration.TabIndex = 3;
-            this.lblDuration.Text = "Duration in minutes";
+            this.lblDuration.Text = "Duration in minutes, leave blank if unknown";
+            // 
+            // lbDurations
+            // 
+            this.lbDurations.FormattingEnabled = true;
+            this.lbDurations.Location = new System.Drawing.Point(396, 133);
+            this.lbDurations.Name = "lbDurations";
+            this.lbDurations.Size = new System.Drawing.Size(40, 108);
+            this.lbDurations.TabIndex = 1;
             // 
             // lblAction
             // 
@@ -248,38 +252,28 @@
             this.lblAction.TabIndex = 2;
             this.lblAction.Text = "Action";
             // 
-            // lbDurations
-            // 
-            this.lbDurations.FormattingEnabled = true;
-            this.lbDurations.Location = new System.Drawing.Point(221, 120);
-            this.lbDurations.Name = "lbDurations";
-            this.lbDurations.Size = new System.Drawing.Size(81, 108);
-            this.lbDurations.TabIndex = 1;
-            // 
             // lbActions
             // 
             this.lbActions.FormattingEnabled = true;
-            this.lbActions.Location = new System.Drawing.Point(6, 120);
+            this.lbActions.Location = new System.Drawing.Point(6, 133);
             this.lbActions.Name = "lbActions";
-            this.lbActions.Size = new System.Drawing.Size(209, 108);
+            this.lbActions.Size = new System.Drawing.Size(264, 108);
             this.lbActions.TabIndex = 0;
             // 
             // AddScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 306);
+            this.ClientSize = new System.Drawing.Size(750, 299);
             this.Controls.Add(this.gbActions);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.gbIngedients);
-            this.Controls.Add(this.gbAppliances);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lblName);
             this.Name = "AddScreen";
             this.Text = "addScreen";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddScreen_FormClosing);
-            this.gbAppliances.ResumeLayout(false);
             this.gbIngedients.ResumeLayout(false);
             this.gbIngedients.PerformLayout();
             this.gbActions.ResumeLayout(false);
@@ -294,7 +288,6 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.ListBox lbAppliances;
-        private System.Windows.Forms.GroupBox gbAppliances;
         private System.Windows.Forms.ComboBox cbAppliances;
         private System.Windows.Forms.GroupBox gbIngedients;
         private System.Windows.Forms.TextBox tbAmount;
@@ -313,5 +306,6 @@
         private System.Windows.Forms.Label lblAction;
         private System.Windows.Forms.ListBox lbDurations;
         private System.Windows.Forms.ListBox lbActions;
+        private System.Windows.Forms.Label label1;
     }
 }
