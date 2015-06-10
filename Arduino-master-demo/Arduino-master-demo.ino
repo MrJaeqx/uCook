@@ -6,9 +6,9 @@
 // v0.9b and v1.0 is default D10
 const int SPI_CS_PIN = 10;
 
-MCP_CAN CAN(SPI_CS_PIN);                                    // Set CS pin
+String reqDevs = "LIST ID";
 
-String command = "";
+MCP_CAN CAN(SPI_CS_PIN);                                    // Set CS pin
 
 void setup()
 {
@@ -29,11 +29,11 @@ START_INIT:
   }
 }
 
-char stmp[8] = {0};
+char stmp[8];
 
 void loop()
 {
-  
+  String command = "";
   if (Serial.available() > 0)
   {
     while (readNextCharacterFromSerial() != '#')
@@ -54,9 +54,15 @@ void loop()
   Serial.println(command);
   }
   
-  if(command.length() > 0 && command.length() <= 8)
+  if(command.startsWith("LIST"))
   {
-    command.toCharArray(stmp, 8);
+    reqDevs.toCharArray(stmp, 9);
+    CAN.sendMsgBuf(0x01, 0, 8, (unsigned char *) stmp);
+  }
+  else if(command.length() > 0 && command.length() <= 8)
+  {
+    command.toCharArray(stmp, 9);
+    Serial.println(stmp);
 
     CAN.sendMsgBuf(0x00, 0, 8, (unsigned char *) stmp);
   }
@@ -65,8 +71,6 @@ void loop()
     Serial.print("TE LANG:\t\t");
     Serial.println(command);
   }
-
-  command = "";
   delay(100);                       // send data per 100ms
 }
 
