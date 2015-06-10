@@ -61,6 +61,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddScreen.Designer.cs">
+      <DependentUpon>AddScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBuilder.cs" />
     <Compile Include="uCookClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +81,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddScreen.resx">
+      <DependentUpon>AddScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="uCookClient.resx">
       <DependentUpon>uCookClient.cs</DependentUpon>
     </EmbeddedResource>
