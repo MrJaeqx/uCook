@@ -32,8 +32,11 @@
             this.readMessageTimer = new System.Windows.Forms.Timer(this.components);
             this.btnSend = new System.Windows.Forms.Button();
             this.tbSend = new System.Windows.Forms.TextBox();
-            this.lblRecv = new System.Windows.Forms.Label();
             this.btnArduino = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblMaster = new System.Windows.Forms.Label();
+            this.timerDevReq = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // readMessageTimer
@@ -58,15 +61,6 @@
             this.tbSend.Size = new System.Drawing.Size(100, 20);
             this.tbSend.TabIndex = 1;
             // 
-            // lblRecv
-            // 
-            this.lblRecv.AutoSize = true;
-            this.lblRecv.Location = new System.Drawing.Point(13, 39);
-            this.lblRecv.Name = "lblRecv";
-            this.lblRecv.Size = new System.Drawing.Size(59, 13);
-            this.lblRecv.TabIndex = 2;
-            this.lblRecv.Text = "Received: ";
-            // 
             // btnArduino
             // 
             this.btnArduino.Location = new System.Drawing.Point(239, 9);
@@ -76,14 +70,48 @@
             this.btnArduino.Text = "Arduino knop";
             this.btnArduino.UseVisualStyleBackColor = true;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 117);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(113, 186);
+            this.listBox1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
+            // 
+            // lblMaster
+            // 
+            this.lblMaster.AutoSize = true;
+            this.lblMaster.ForeColor = System.Drawing.Color.Red;
+            this.lblMaster.Location = new System.Drawing.Point(13, 75);
+            this.lblMaster.Name = "lblMaster";
+            this.lblMaster.Size = new System.Drawing.Size(73, 13);
+            this.lblMaster.TabIndex = 7;
+            this.lblMaster.Text = "Master offline.";
+            // 
+            // timerDevReq
+            // 
+            this.timerDevReq.Interval = 5000;
+            this.timerDevReq.Tick += new System.EventHandler(this.timerDevReq_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(322, 90);
+            this.ClientSize = new System.Drawing.Size(322, 315);
+            this.Controls.Add(this.lblMaster);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnArduino);
-            this.Controls.Add(this.lblRecv);
             this.Controls.Add(this.tbSend);
             this.Controls.Add(this.btnSend);
             this.Name = "Form1";
@@ -98,8 +126,11 @@
         private System.Windows.Forms.Timer readMessageTimer;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox tbSend;
-        private System.Windows.Forms.Label lblRecv;
         private System.Windows.Forms.Button btnArduino;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMaster;
+        private System.Windows.Forms.Timer timerDevReq;
     }
 }
 

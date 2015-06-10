@@ -17,20 +17,41 @@ namespace serverUcook
         {
             recipeDatabase = new List<Recipe>();
             recipeDatabase.Add(pastaDummy());
+            recipeDatabase.Add(rijstDummy());
             Console.WriteLine("number of items in database: {0}", recipeDatabase.Count);
         }
 
         private Recipe pastaDummy()
         {
-            Recipe pasta = new Recipe(recipeDatabase.Count, "pasta voor 1 persoon");
-            pasta.ingredients.Add(new Ingredient("pennen", "150g"));
-            pasta.appliances.Add(new Appliance(pasta.appliances.Count, 50.0, "uCook Kookpan"));;
-            pasta.timeLine.addTimeSlot("Doe 1L water in de uCook kookpan.", 10);
-            pasta.timeLine.addTimeSlot("Voeg de pasta toe aan het water", 12);
+            Recipe pasta = new Recipe();
+            pasta.name = "Pasta voor 1 persoon";
+            pasta.addIngredient(new Ingredient("pennen", "150g"));
+            pasta.addAppliance("uCook Kookpan");
+            pasta.timeLine.addTimeSlot("Doe 1L water in de uCook waterkoker.", 1);
+            pasta.timeLine.addTimeSlot("Voeg de pasta toe aan het water", 1);
+            pasta.timeLine.addTimeSlot("Wacht tot de pasta klaar is", 25);
             pasta.timeLine.addTimeSlot("giet de pasta af en schep op", 1);
             pasta.setTotalTime();
             return pasta;
         }
+
+        private Recipe rijstDummy()
+        {
+            Recipe rijst = new Recipe();
+            rijst.name = "Rijst voor 1 persoon";
+            rijst.addIngredient(new Ingredient("Rijst", "100g"));
+            rijst.addAppliance("uCook Kookpan");
+            rijst.addAppliance("uCook Waterkoker");
+            rijst.timeLine.addTimeSlot("Doe 1L water in de uCook Waterkoker.", 1);
+            rijst.timeLine.addTimeSlot("Wacht tot het water kookt", 5);
+            rijst.timeLine.addTimeSlot("Giet het kokende water over in de uCook Kookpan", 1);
+            rijst.timeLine.addTimeSlot("Doe de rijst in de pan met kokend water", 1);
+            rijst.timeLine.addTimeSlot("Wacht tot de rijst klaar is.", 8);
+            rijst.timeLine.addTimeSlot("Giet de rijst af", 1);
+            rijst.setTotalTime();
+            return rijst;
+        }
+
 
         public Recipe sendRecipe(string name)
         {
@@ -54,7 +75,6 @@ namespace serverUcook
 
             foreach (Recipe r in recipeDatabase)
             {
-                Console.WriteLine("found in recipe title: {0}", r.name.Contains(searchInfo));
                 if (r.name.Contains(searchInfo))
                 {
                     result.Add(r);
@@ -68,14 +88,14 @@ namespace serverUcook
                             result.Add(r);
                         }
                     }
-                    foreach (Appliance a in r.appliances)
+                    foreach (String a in r.appliances)
                     {
-                        if (a.name.Contains(searchInfo) && !result.Contains(r))
+                        if (a.Contains(searchInfo) && !result.Contains(r))
                         {
                             result.Add(r);
                         }
                     }
-                    foreach (TimeSlot t in r.timeLine.timeSlots)
+                    foreach (TimeSlot t in r.timeLine.timeLine)
                     {
                         if (t.action.Contains(searchInfo) && !result.Contains(r))
                         {

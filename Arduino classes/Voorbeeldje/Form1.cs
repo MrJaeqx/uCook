@@ -65,7 +65,7 @@ namespace Voorbeeldje
             }
             else
             {
-                String port = "COM3";
+                String port = "COM5";
                 try
                 {
                     serialPort.PortName = port;
@@ -91,46 +91,8 @@ namespace Voorbeeldje
         /// <param name="message">The received message</param>
         private void MessageReceived(String message)
         {
-            // TODO: Put code here to handle the received message.
-            //       The received message is contained in the message parameter.
-            // Hints: 
-            //  - You can use the String methods to parse the message and (if present) its parameters.
-            //    See: http://msdn.microsoft.com/en-us/library/system.string.aspx
-            //     for help on available String methods like
-            //     - String.StartsWith(...)
-            //     - String.Substring(...)
-            //     - String.IndexOf(...)
-            //     - etc
-            //  - Convert.ToInt32(...) can be used to convert strings to an integer.
-            //  - Sliders have a 'Value' property which can be used to get/set the position of the slider.
-            
-            // insert train message handling here
-            lblRecv.Text = "Received: " + message;
-            if (message.Contains("okr"))
-            {
-                this.BackColor = System.Drawing.Color.Red;
-            }
+            //if(message.Contains(ID))
 
-            if (message.Contains("okb"))
-            {
-                this.BackColor = System.Drawing.Color.Blue;
-            }
-
-            if (message.Contains("okg"))
-            {
-                this.BackColor = System.Drawing.Color.Green;
-            }
-
-            if (message.Contains("off"))
-            {
-                this.BackColor = System.Drawing.Color.Gray;
-            }
-
-            if (message.Contains("button"))
-            {
-                btnArduino.Enabled = arduinoButton;
-                arduinoButton = !arduinoButton;
-            }
         }
 
         /// <summary>
@@ -247,7 +209,7 @@ namespace Voorbeeldje
         private void UpdateUserInterface()
         {
         }
-        
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -271,6 +233,24 @@ namespace Voorbeeldje
         private void btnSend_Click(object sender, EventArgs e)
         {
             string message = messageBeginMarker + tbSend.Text + messageEndMarker;
+            SendMessage(message);
+        }
+
+        private void timerDevReq_Tick(object sender, EventArgs e)
+        {
+            if (serialPort.IsOpen)
+            {
+                lblMaster.Text = "Master online!";
+                lblMaster.ForeColor = System.Drawing.Color.LightGreen;
+            }
+            else
+            {
+                lblMaster.Text = "Master offline.";
+                lblMaster.ForeColor = System.Drawing.Color.Red;
+            }
+
+
+            string message = messageBeginMarker + "LIST_DEVICES" + messageEndMarker;
             SendMessage(message);
         }
     }
