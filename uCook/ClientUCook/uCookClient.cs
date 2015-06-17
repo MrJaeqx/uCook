@@ -17,14 +17,6 @@ namespace ClientUCook
         //Proxy for communication with server
         private uCookService.RecipesClient proxy;
 
-        //Arduino connection
-        /*private const int connectionSpeed = 9600;
-        private const string messageBeginMarker = "#";
-        private const string messageEndMarker = "%";
-        private const string messageValueMarker = ":";
-        private SerialPort serialPort;
-        private MessageBuilder messageBuilder;*/
-
         //Public Recipe for sharing between forms
         public static uCookContract.Recipe newRecipe = null;
 

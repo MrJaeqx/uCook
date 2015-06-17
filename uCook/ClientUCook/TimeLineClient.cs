@@ -18,7 +18,6 @@ namespace ClientUCook
         private const int connectionSpeed = 9600;
         private const string messageBeginMarker = "#";
         private const string messageEndMarker = "%";
-        private const string messageValueMarker = ":";
         private SerialPort serialPort;
         private MessageBuilder messageBuilder;
 
@@ -35,9 +34,7 @@ namespace ClientUCook
             InitializeComponent();
             timeLine = recipe.timeLine;
 
-            updateSlots();
-
-            initPorts();         
+            serialPort = new SerialPort();
         }
 
         //////////////////////
@@ -45,8 +42,8 @@ namespace ClientUCook
         //////////////////////
         private void initPorts()
         {
-            //arduino connection init
-            serialPort = new SerialPort("COM4", connectionSpeed);
+            //arduino connection init            
+            serialPort.BaudRate = connectionSpeed;
             messageBuilder = new MessageBuilder(messageBeginMarker, messageEndMarker);
 
             //opening port
@@ -57,11 +54,14 @@ namespace ClientUCook
             }
             else
             {
+                String port = "COM5";
                 try
                 {
+                    serialPort.PortName = port;
                     serialPort.Open();
                     if (serialPort.IsOpen)
                     {
+                        messageBuilder.Clear();
                         serialPort.DiscardInBuffer();
                         serialPort.DiscardOutBuffer();
                     }
@@ -77,7 +77,7 @@ namespace ClientUCook
         //////////////////////
         //methods
         //////////////////////
-        private void updateSlots()
+        private bool updateSlots()
         {
             //check for out of range exception
             if(timeLine.currentSlot < timeLine.ammountTimeSlots)
@@ -112,15 +112,19 @@ namespace ClientUCook
                 tbNext.Text = "no action required.";
             }
 
+            //send to Arduino
             if(currentTimeSlot != null)
             {
                 sendActionsToMaster();
-            }     
+                return true;
+            }
+
+            return false;
         }
 
         private void sendActionsToMaster()
         {
-            switch(currentTimeSlot.appliance)
+            switch (currentTimeSlot.appliance)
             {
                 case uCookContract.Appliances.none:     //TODO: turn of seperate appliances
                     SendMessage(messageBeginMarker + "1GP:P1-" + messageEndMarker);
@@ -143,7 +147,7 @@ namespace ClientUCook
                 case uCookContract.Appliances.uCook_Waterkoker:
                     SendMessage(messageBeginMarker + "2WK:ON+" + messageEndMarker);
                     break;
-            }
+            }           
         }
 
         //////////////////////
@@ -151,9 +155,22 @@ namespace ClientUCook
         /////////////////////
         private void btnNext_Click(object sender, EventArgs e)
         {
-            timeLine.nextSlot();
+            if(btnNext.Text == "Next")
+            {
+                timeLine.nextSlot();
 
-            updateSlots();
+                bool succes = updateSlots();
+
+                if (!succes)
+                {
+                    btnNext.Text = "Finish";
+                }
+            }
+            else if(btnNext.Text == "Finish")
+            {
+
+            }
+            
         }
 
         //////////////////////
@@ -247,6 +264,13 @@ namespace ClientUCook
                 serialPort.Close();
             }
             uCookClient.mainScreen.Enabled = true;
+        }
+
+        private void TimeLineClient_Shown(object sender, EventArgs e)
+        {
+            updateSlots();
+
+            initPorts(); 
         }
     }
 }
