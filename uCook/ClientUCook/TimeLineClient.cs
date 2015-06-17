@@ -122,17 +122,26 @@ namespace ClientUCook
         {
             switch(currentTimeSlot.appliance)
             {
-                case uCookContract.Appliances.none:
-                    SendMessage(messageBeginMarker + "" + messageEndMarker);
-                    break;
-                case uCookContract.Appliances.uCook_Braadpan:
-                    SendMessage(messageBeginMarker + "" + messageEndMarker);
+                case uCookContract.Appliances.none:     //TODO: turn of seperate appliances
+                    SendMessage(messageBeginMarker + "1GP:P1-" + messageEndMarker);
+                    SendMessage(messageBeginMarker + "1GP:P2-" + messageEndMarker);
+                    SendMessage(messageBeginMarker + "1GP:P3-" + messageEndMarker);
+                    SendMessage(messageBeginMarker + "1GP:P4-" + messageEndMarker);
                     break;
                 case uCookContract.Appliances.uCook_Kookpan:
-                    SendMessage(messageBeginMarker + "" + messageEndMarker);
+                    SendMessage(messageBeginMarker + "1GP:P1+" + messageEndMarker);
+                    break;
+                case uCookContract.Appliances.uCook_Braadpan:
+                    SendMessage(messageBeginMarker + "1GP:P2+" + messageEndMarker);
+                    break;
+                case uCookContract.Appliances.uCook_Wokpan:
+                    SendMessage(messageBeginMarker + "1GP:P3+" + messageEndMarker);
+                    break;
+                case uCookContract.Appliances.uCook_Grilpan:
+                    SendMessage(messageBeginMarker + "1GP:P4+" + messageEndMarker);
                     break;
                 case uCookContract.Appliances.uCook_Waterkoker:
-                    SendMessage(messageBeginMarker + "" + messageEndMarker);
+                    SendMessage(messageBeginMarker + "2WK:ON+" + messageEndMarker);
                     break;
             }
         }
@@ -199,7 +208,16 @@ namespace ClientUCook
 
         private void MessageReceived(String message)
         {
+            if (message.Substring(0, 1) == messageBeginMarker 
+                && message.Substring(message.Length -1, 1) == messageEndMarker)
+            {
+                message = message.Substring(1, message.Length - 2);
 
+                if(message == "1GP:AC+")
+                {
+                    timeLine.nextSlot();
+                }
+            }    
         }
 
         //////////////////////
