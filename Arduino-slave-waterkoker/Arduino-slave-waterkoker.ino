@@ -12,13 +12,15 @@ MCP_CAN CAN(SPI_CS_PIN);
 Bounce debouncer = Bounce();
 
 String buttonPressed = "2WK:AC+";
-String waterCooks = "2WK:COO";
+String waterCooks = "2WK:AC+";
 String waterkokerSlaveStartup = "2WK:INI";
 
 int isCookingPin = 7;
 int doneCookingPin = 8;
 
 unsigned long time;
+bool timeUpdate = true;
+bool msgSent = false;
 
 void setup() {
   // Setup Serial
@@ -66,6 +68,11 @@ void loop() {
   unsigned char buf[8];
   char msg[8];
 
+  if (timeUpdate)
+  {
+    time = millis();
+  }
+
   if (CAN_MSGAVAIL == CAN.checkReceive())           // check if data coming
   {
     CAN.readMsgBuf(&len, buf);    // read data,  len: data length, buf: data buf
@@ -92,7 +99,8 @@ void loop() {
         {
           // start cooking
           digitalWrite(isCookingPin, HIGH);
-          time = millis();
+          timeUpdate = false;
+          Serial.println("ON BIATCH!");
         }
       }
     }
@@ -113,7 +121,7 @@ void checkButton()
 }
 
 void checkTime() {
-  if (millis() > time + 10000) {
+  if (millis() - time > 10000 && !msgSent) {
     // Cooking done
     char stmpC[8] = {0};
     waterCooks.toCharArray(stmpC, 8);
@@ -121,6 +129,7 @@ void checkTime() {
     Serial.println(CAN.sendMsgBuf(0x02, 0, 8, (unsigned char *) stmpC), DEC);
 
     digitalWrite(doneCookingPin, HIGH);
+    msgSent = true;
     /*
     int melody[] = { 262, 196, 196, 220, 196, 0, 247, 262 };
     int noteDurations[] = { 4, 8, 8, 4, 4, 4, 4, 4 };
@@ -132,10 +141,12 @@ void checkTime() {
       noTone(5);
     }*/
   }
-  else if (millis() > time + 20000)
+  else if (millis() - time > 20000)
   {
     // After 20sec LEDs uit
     digitalWrite(doneCookingPin, LOW);
     digitalWrite(isCookingPin, LOW);
+    timeUpdate = true;
+    msgSent = false;
   }
 }
