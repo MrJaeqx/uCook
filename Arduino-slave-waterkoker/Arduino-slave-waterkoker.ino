@@ -48,7 +48,6 @@ START_INIT:
     char iniBuffer[8] = {0};
     waterkokerSlaveStartup.toCharArray(iniBuffer, 8);
     CAN.sendMsgBuf(0x02, 0, 8, (unsigned char *) iniBuffer);
-    delay(1000);
   }
   else
   {
@@ -73,23 +72,30 @@ void loop() {
     time = millis();
   }
 
-  if (CAN_MSGAVAIL == CAN.checkReceive())           // check if data coming
+  // Check if message is available
+  if (CAN_MSGAVAIL == CAN.checkReceive())
   {
+    // Read data from CAN bus
     CAN.readMsgBuf(&len, buf);    // read data,  len: data length, buf: data buf
 
-    for (int i = 0; i < len; i++) // print the data
+    // Convert unsinged char to char
+    for (int i = 0; i < len; i++)
     {
-      Serial.write(buf[i]);
-      Serial.print(" ");
-
       msg[i] = buf[i];
-
     }
-    Serial.println();
 
+    // Put char buffer in string
     String message(msg);
 
-    if (message.length() > 0)
+    // Send I'm alive
+    if (message == "UPDATE")
+    {
+      char stmp[8] = {0};
+      waterkokerSlaveStartup.toCharArray(stmp, 8);
+      CAN.sendMsgBuf(0x02, 0, 8, (unsigned char *) stmp);
+    }
+    // Check for commands from CAN
+    else if (message.length() > 0)
     {
       Serial.print("Message: \t");
       Serial.println(message);
@@ -100,13 +106,13 @@ void loop() {
           // start cooking
           digitalWrite(isCookingPin, HIGH);
           timeUpdate = false;
-          Serial.println("ON BIATCH!");
         }
       }
     }
   }
 }
 
+// Check if button is pressed
 void checkButton()
 {
   debouncer.update();
@@ -120,6 +126,7 @@ void checkButton()
 
 }
 
+// Check delays with millis()
 void checkTime() {
   if (millis() - time > 10000 && !msgSent) {
     // Cooking done
@@ -130,16 +137,6 @@ void checkTime() {
 
     digitalWrite(doneCookingPin, HIGH);
     msgSent = true;
-    /*
-    int melody[] = { 262, 196, 196, 220, 196, 0, 247, 262 };
-    int noteDurations[] = { 4, 8, 8, 4, 4, 4, 4, 4 };
-    for (int thisNote = 0; thisNote < 8; thisNote++) {
-      int noteDuration = 1000 / noteDurations[thisNote];
-      tone(5, melody[thisNote], noteDuration);
-      int pauseBetweenNotes = noteDuration * 1.30;
-      delay(pauseBetweenNotes);
-      noTone(5);
-    }*/
   }
   else if (millis() - time > 20000)
   {
