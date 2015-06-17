@@ -29,6 +29,9 @@ namespace ClientUCook
         //minute counter
         private int timePassed = 0;
 
+        //available appliances
+        List<uCookContract.Appliances> availableAppliances = null;
+
         public TimeLineClient(uCookContract.Recipe recipe)
         {
             InitializeComponent();
@@ -38,9 +41,7 @@ namespace ClientUCook
 
             initPorts();
 
-            updateSlots();
-
-            
+            updateSlots(false);
         }
 
         //////////////////////
@@ -83,10 +84,15 @@ namespace ClientUCook
         //////////////////////
         //methods
         //////////////////////
-        private bool updateSlots()
+        private bool updateSlots(bool next)
         {
             bool success = true;
 
+            if(next)
+            {
+                timeLine.nextSlot();
+            }
+            
             //check for out of range exception
             if(timeLine.currentSlot < timeLine.ammountTimeSlots)
             {
@@ -100,7 +106,7 @@ namespace ClientUCook
                 }
                 else
                 {
-                    tbDuration.Text = "waiting for user confirmation";
+                    tbDuration.Text = "waiting for confirmation";
                 }
             }
             else
@@ -164,6 +170,11 @@ namespace ClientUCook
             }           
         }
 
+        private void requestAppliances()
+        {
+            SendMessage(messageBeginMarker + "UPDATE" + messageEndMarker);
+        }
+
         //////////////////////
         //button handling
         /////////////////////
@@ -171,9 +182,7 @@ namespace ClientUCook
         {
             if(btnNext.Text == "Next")
             {
-                timeLine.nextSlot();
-
-                if (!updateSlots())
+                if (!updateSlots(true))
                 {
                     btnNext.Text = "Finish";
                 }
@@ -239,20 +248,33 @@ namespace ClientUCook
 
         private void MessageReceived(String message)
         {
+            //check if message has correct format
             if (message.Substring(0, 1) == messageBeginMarker 
                 && message.Substring(message.Length -1, 1) == messageEndMarker)
             {
                 message = message.Substring(1, message.Length - 2);
-
-                if(message == "1GP:AC+")
+                if(message.Contains(":"))
                 {
-                    timeLine.nextSlot();
-
-                    if (!updateSlots())
+                    if (message.Contains("AC+")) //general acknowledge
                     {
-                        btnNext.Text = "Finish";
+                        if (!updateSlots(true))
+                        {
+                            btnNext.Text = "Finish";
+                        }
+                    }
+                    else if (message == "2WK:COO") //waterkoker done
+                    {
+                        if (!updateSlots(true))
+                        {
+                            btnNext.Text = "Finish";
+                        }
                     }
                 }
+                else
+                {
+                    
+                }
+                
             }    
         }
 
@@ -268,9 +290,8 @@ namespace ClientUCook
             {
                 timePassed = 0;
                 durationTimer.Enabled = false;
-                timeLine.nextSlot();
 
-                if (!updateSlots())
+                if (!updateSlots(true))
                 {
                     btnNext.Text = "Finish";
                 }

@@ -49,7 +49,6 @@ namespace ClientUCook
         /////////////////////
         private void addRecipeBtn_Click(object sender, EventArgs e)
         {
-            //addScreen = new AddScreen(proxy.getAvailableAppliances());
             addScreen.Show();
             this.Enabled = false;
         }
