@@ -1,14 +1,44 @@
+/////////////////////////////////////////////////////////////////
+Appliances:
+"uCook Kookpan"		pit1
+"uCook Braadpan"	pit2
+"uCook Wokpan"		pit3
+"uCook Grillpan"	pit4
+"uCook Waterkoker"
+
+
+/////////////////////////////////////////////////////////////////
+C# -> Arduino messages:
 Beginmarker: #
 tussenmarker: :
 endmarker: %
 
-appliances:
-"uCook Kookpan"
-"uCook Braadpan"
-"uCook Waterkoker"
+1GP:P1+_	pit1 aan
+1GP:P2+_	pit2 aan
+1GP:P3+_	pit3 aan
+1GP:P4+_	pit4 aan
+
+1GP:P1-_	pit1 uit
+1GP:P2-_	pit2 uit
+1GP:P3-_	pit3 uit
+1GP:P4-_	pit4 uit
+
+2WK:ON+_	waterkoker AAN
 
 
+/////////////////////////////////////////////////////////////////
+Arduino -> C# Messages
+Beginmarker: #
+tussenmarker: :
+endmarker: %
 
+1GP:AC+_	action acknowledgement gaspit (button)
+
+2WK:FIL_	waterkoker gevuld
+2WK:COO_	water kookt
+
+
+/////////////////////////////////////////////////////////////////
 electrische fornuis CAN-BUS berichten:
 
 1GP:P1+_	pit1 aan
@@ -21,11 +51,14 @@ electrische fornuis CAN-BUS berichten:
 1GP:P3-_	pit3 uit
 1GP:P4-_	pit4 uit
 
-1GP:ACT+	action acknowledgement gaspit (button)
+1GP:AC+_	action acknowledgement gaspit (button)
 
+
+/////////////////////////////////////////////////////////////////
 waterkoker CAN-BUS berichten:
 
 2WK:ON+_	waterkoker AAN
-2WK:FIL_	waterkoker vullen
 
-2WK:FI+_	waterkoker gevuld
+2WK:FIL_	waterkoker gevuld
+2WK:COO_	water kookt
+
