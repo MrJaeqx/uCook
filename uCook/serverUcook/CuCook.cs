@@ -22,10 +22,7 @@ namespace serverUcook
             Console.WriteLine("number of items in database: {0}", recipeDatabase.Count);
 
             availableAppliances = new List<Appliances>();
-            availableAppliances.Add(Appliances.none);
-            availableAppliances.Add(Appliances.uCook_Waterkoker);
-            availableAppliances.Add(Appliances.uCook_Kookpan);
-            availableAppliances.Add(Appliances.uCook_Braadpan);          
+            availableAppliances = Enum.GetValues(typeof(Appliances)).Cast<Appliances>().ToList();
         }
 
         private Recipe pastaDummy()

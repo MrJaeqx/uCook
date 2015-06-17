@@ -123,16 +123,16 @@ namespace ClientUCook
             switch(currentTimeSlot.appliance)
             {
                 case uCookContract.Appliances.none:
-                    //SendMessage("");
+                    SendMessage(messageBeginMarker + "" + messageEndMarker);
                     break;
                 case uCookContract.Appliances.uCook_Braadpan:
-                    //SendMessage("");
+                    SendMessage(messageBeginMarker + "" + messageEndMarker);
                     break;
                 case uCookContract.Appliances.uCook_Kookpan:
-                    //SendMessage("");
+                    SendMessage(messageBeginMarker + "" + messageEndMarker);
                     break;
                 case uCookContract.Appliances.uCook_Waterkoker:
-                    //SendMessage("");
+                    SendMessage(messageBeginMarker + "" + messageEndMarker);
                     break;
             }
         }

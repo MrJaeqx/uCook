@@ -80,6 +80,8 @@ namespace uCookContract
         none = 0,
         uCook_Kookpan = 1,
         uCook_Braadpan = 2,
-        uCook_Waterkoker = 3
+        uCook_Wokpan = 3,
+        uCook_Grilpan = 4,
+        uCook_Waterkoker = 5
     }
 }
