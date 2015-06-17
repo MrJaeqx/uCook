@@ -1,6 +1,6 @@
 [Serializable]
 public enum Appliances
-        {
+{
             none = 0,
             uCook_Kookpan = 1,
             uCook_Braadpan = 2,
@@ -15,7 +15,7 @@ public enum Appliances
             uCook_Tostiijzer = 11,
             uCook_Weegschaal = 12,
             uCook_Frituurpan = 13
-        }
+}
 
 
 /////////////////////////////////////////////////////////////////
@@ -45,6 +45,8 @@ endmarker: %
 
 2WK:ON+		waterkoker AAN
 
+UPDATE		Arduino master start synchronisatie devices
+
 
 /////////////////////////////////////////////////////////////////
 Arduino -> C# Messages
@@ -56,6 +58,11 @@ endmarker: %
 
 2WK:FIL		waterkoker gevuld
 2WK:COO		water kookt
+
+START_SYNC	Nieuwe synchronisatie wordt gestart
+DEV:ABSENT	DEV (bijvoorbeeld 1GP of 2WK) is niet aanwezig in het huidige netwerk
+DEV:PRESENT	DEV (bijvoorbeeld 1GP of 2WK) is present in het huidige netwerk
+
 
 
 /////////////////////////////////////////////////////////////////
@@ -73,6 +80,8 @@ electrische fornuis CAN-BUS berichten:
 
 1GP:AC+_	action acknowledgement pit (button)
 
+1GP:INI_	gaspit is initialised / present
+
 
 /////////////////////////////////////////////////////////////////
 waterkoker CAN-BUS berichten:
@@ -82,3 +91,4 @@ waterkoker CAN-BUS berichten:
 2WK:FIL_	waterkoker gevuld
 2WK:COO_	water kookt
 
+2WK:INI_	waterkoker is initialised / present
