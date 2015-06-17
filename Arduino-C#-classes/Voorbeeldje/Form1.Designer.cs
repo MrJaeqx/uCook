@@ -34,6 +34,7 @@
             this.tbSend = new System.Windows.Forms.TextBox();
             this.lblRecv = new System.Windows.Forms.Label();
             this.btnArduino = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // readMessageTimer
@@ -75,13 +76,23 @@
             this.btnArduino.TabIndex = 3;
             this.btnArduino.Text = "Arduino knop";
             this.btnArduino.UseVisualStyleBackColor = true;
+            this.btnArduino.Click += new System.EventHandler(this.btnArduino_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(13, 103);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(207, 277);
+            this.listBox1.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(322, 90);
+            this.ClientSize = new System.Drawing.Size(322, 427);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnArduino);
             this.Controls.Add(this.lblRecv);
             this.Controls.Add(this.tbSend);
@@ -100,6 +111,7 @@
         private System.Windows.Forms.TextBox tbSend;
         private System.Windows.Forms.Label lblRecv;
         private System.Windows.Forms.Button btnArduino;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

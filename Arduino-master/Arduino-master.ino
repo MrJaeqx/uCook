@@ -8,9 +8,15 @@ String command = "";
 String ini = "INI";
 String ack = "AC+";
 
+String appliances[10];
+
+unsigned long lastIniTime = 0;
+boolean sendList = false;
+
 void setup()
 {
   Serial.begin(9600);
+  Setup_Appliances(appliances);
 
 START_INIT:
 
@@ -35,8 +41,26 @@ void loop()
   
   SerialRead(&command);
   
+  if(command == "RESET%")
+  {
+    Setup_Appliances(appliances);
+  }
   
-  if(command.length() > 0 && command.length() <= 8)
+  if(command == "UPDATE%")
+  {
+    CAN_Send(0x00, "UPDATE");
+    sendList = true;
+    lastIniTime = millis();
+  }
+  
+  if(sendList == true && (millis() - lastIniTime > 1000))
+  {
+    Send_ApplianceList(appliances);
+    sendList = false;
+    Setup_Appliances(appliances);
+  }
+  
+  else if(command.length() > 0 && command.length() <= 8)
   {
     CAN_Send(0x00, command);
   }
@@ -47,5 +71,6 @@ void loop()
   }
 
   command = "";
-  delay(100);                       // send data per 100ms
+  millis();
+  delay(10);  // send data per 10ms
 }

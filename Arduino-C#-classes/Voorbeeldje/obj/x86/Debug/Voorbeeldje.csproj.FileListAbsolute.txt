@@ -50,3 +50,11 @@ C:\Users\Johri van Eerd\Google Drive\CSA42\Demo\Arduino classes\Voorbeeldje\obj\
 \\vmware-host\Shared Folders\Documenten\GitHub\Demo\Arduino classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.exe
 \\vmware-host\Shared Folders\Documenten\GitHub\Demo\Arduino classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.pdb
 C:\Users\Tim\Documents\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.pdb
+\\vmware-host\Shared Folders\Documenten\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\bin\Debug\Voorbeeldje.exe
+\\vmware-host\Shared Folders\Documenten\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\bin\Debug\Voorbeeldje.pdb
+\\vmware-host\Shared Folders\Documenten\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.csprojResolveAssemblyReference.cache
+\\vmware-host\Shared Folders\Documenten\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.Form1.resources
+\\vmware-host\Shared Folders\Documenten\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.Properties.Resources.resources
+\\vmware-host\Shared Folders\Documenten\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.csproj.GenerateResource.Cache
+\\vmware-host\Shared Folders\Documenten\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.exe
+\\vmware-host\Shared Folders\Documenten\GitHub\uCook\Arduino-C#-classes\Voorbeeldje\obj\x86\Debug\Voorbeeldje.pdb

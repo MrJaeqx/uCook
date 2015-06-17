@@ -13,8 +13,26 @@ namespace Voorbeeldje
 {
     public partial class Form1 : Form
     {
+        public enum Appliances
+        {
+            none = 0,
+            uCook_Kookpan = 1,
+            uCook_Braadpan = 2,
+            uCook_Wokpan = 3,
+            uCook_Grilpan = 4,
+            uCook_Waterkoker = 5,
+            uCook_Blender = 6,
+            uCook_Vaatwasser = 7,
+            uCook_Oven = 8,
+            uCook_Magnetron = 9,
+            uCook_Afzuigkap = 10,
+            uCook_Tostiijzer = 11,
+            uCook_Weegschaal = 12,
+            uCook_Frituurpan = 13
+        }
 
         bool arduinoButton = false;
+        List<Appliances> appliances;
         /// <summary>
         /// The speed of the serial connection (bytes per second).
         /// TODO: make sure that the speed in the Arduino program is set to the same value!
@@ -83,6 +101,7 @@ namespace Voorbeeldje
                     MessageBox.Show("Could not connect to the given serial port: " + exception.Message);
                 }
             }
+            appliances = new List<Appliances>();
         }
 
         /// <summary>
@@ -105,7 +124,7 @@ namespace Voorbeeldje
             //  - Sliders have a 'Value' property which can be used to get/set the position of the slider.
             
             // insert train message handling here
-            lblRecv.Text = "Received: " + message;
+            /*lblRecv.Text = "Received: " + message;
             if (message.Contains("okr"))
             {
                 this.BackColor = System.Drawing.Color.Red;
@@ -130,7 +149,63 @@ namespace Voorbeeldje
             {
                 btnArduino.Enabled = arduinoButton;
                 arduinoButton = !arduinoButton;
+            }*/
+
+
+            if (message == "#START_SYNC%")
+            {
+                appliances.Clear();
             }
+            if (message.Contains("PRESENT"))
+            {
+                if (message.Contains("1GP"))
+                {
+                    appliances.Add(Appliances.uCook_Braadpan);
+                    appliances.Add(Appliances.uCook_Grilpan);
+                    appliances.Add(Appliances.uCook_Kookpan);
+                    appliances.Add(Appliances.uCook_Wokpan);
+                }
+                if (message.Contains("2WK"))
+                {
+                    appliances.Add(Appliances.uCook_Waterkoker);
+                }
+                if (message.Contains("3BL"))
+                {
+                    appliances.Add(Appliances.uCook_Blender);
+                }
+                if (message.Contains("4VW"))
+                {
+                    appliances.Add(Appliances.uCook_Vaatwasser);
+                }
+                if (message.Contains("5OV"))
+                {
+                    appliances.Add(Appliances.uCook_Oven);
+                }
+                if (message.Contains("6MW"))
+                {
+                    appliances.Add(Appliances.uCook_Magnetron);
+                }
+                if (message.Contains("7AK"))
+                {
+                    appliances.Add(Appliances.uCook_Afzuigkap);
+                }
+                if (message.Contains("8TI"))
+                {
+                    appliances.Add(Appliances.uCook_Tostiijzer);
+                }
+                if (message.Contains("9WS"))
+                {
+                    appliances.Add(Appliances.uCook_Weegschaal);
+                }
+                if (message.Contains("0FP"))
+                {
+                    appliances.Add(Appliances.uCook_Frituurpan);
+                }
+            }
+
+           
+
+
         }
 
         /// <summary>
@@ -272,6 +347,14 @@ namespace Voorbeeldje
         {
             string message = messageBeginMarker + tbSend.Text + messageEndMarker;
             SendMessage(message);
+        }
+
+        private void btnArduino_Click(object sender, EventArgs e)
+        {
+            foreach (Appliances a in appliances)
+            {
+                listBox1.Items.Add(a.ToString());
+            }
         }
     }
 }
