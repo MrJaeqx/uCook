@@ -37,13 +37,14 @@
             this.readMessageTimer = new System.Windows.Forms.Timer(this.components);
             this.tbDuration = new System.Windows.Forms.TextBox();
             this.lblTime = new System.Windows.Forms.Label();
+            this.durationTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(152, 226);
+            this.btnNext.Location = new System.Drawing.Point(214, 226);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(120, 23);
+            this.btnNext.Size = new System.Drawing.Size(58, 23);
             this.btnNext.TabIndex = 0;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -95,7 +96,7 @@
             this.tbDuration.Enabled = false;
             this.tbDuration.Location = new System.Drawing.Point(12, 226);
             this.tbDuration.Name = "tbDuration";
-            this.tbDuration.Size = new System.Drawing.Size(120, 20);
+            this.tbDuration.Size = new System.Drawing.Size(196, 20);
             this.tbDuration.TabIndex = 5;
             // 
             // lblTime
@@ -103,9 +104,14 @@
             this.lblTime.AutoSize = true;
             this.lblTime.Location = new System.Drawing.Point(31, 210);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(82, 13);
+            this.lblTime.Size = new System.Drawing.Size(78, 13);
             this.lblTime.TabIndex = 7;
-            this.lblTime.Text = "Duration of step";
+            this.lblTime.Text = "Time remaining";
+            // 
+            // durationTimer
+            // 
+            this.durationTimer.Interval = 60000;
+            this.durationTimer.Tick += new System.EventHandler(this.durationTimer_Tick);
             // 
             // TimeLineClient
             // 
@@ -137,5 +143,6 @@
         private System.Windows.Forms.Timer readMessageTimer;
         private System.Windows.Forms.TextBox tbDuration;
         private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Timer durationTimer;
     }
 }

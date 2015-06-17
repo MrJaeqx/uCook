@@ -61,6 +61,14 @@ namespace serverUcook
             return rijst;
         }
 
+        private Recipe gebakkenAardappelenDummy()
+        {
+            Recipe gebakkenAardappelen = new Recipe();
+            gebakkenAardappelen.name = "gebakkenAardappelen voor 4!";
+            gebakkenAardappelen.addIngredient(new Ingredient("Aardappelschijfjes", "600g"));
+
+            return gebakkenAardappelen;
+        }
 
         public Recipe sendRecipe(string name)
         {

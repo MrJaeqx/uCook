@@ -27,6 +27,9 @@ namespace ClientUCook
         private uCookContract.TimeSlot currentTimeSlot = null;
         private uCookContract.TimeSlot nextTimeSlot = null;
 
+        //minute counter
+        private int timePassed = 0;
+
         public TimeLineClient(uCookContract.Recipe recipe)
         {
             InitializeComponent();
@@ -77,7 +80,7 @@ namespace ClientUCook
         private void updateSlots()
         {
             //check for out of range exception
-            if(timeLine.currentSlot <= timeLine.ammountTimeSlots)
+            if(timeLine.currentSlot < timeLine.ammountTimeSlots)
             {
                 currentTimeSlot = timeLine.timeLine[timeLine.currentSlot];
                 tbCurrent.Text = currentTimeSlot.action;
@@ -98,7 +101,7 @@ namespace ClientUCook
             }
 
             //check for out of range exception
-            if (timeLine.currentSlot + 1 <= timeLine.ammountTimeSlots)
+            if (timeLine.currentSlot + 1 < timeLine.ammountTimeSlots)
             {
                 nextTimeSlot = timeLine.timeLine[timeLine.currentSlot + 1];
                 tbNext.Text = nextTimeSlot.action;
@@ -109,12 +112,15 @@ namespace ClientUCook
                 tbNext.Text = "no action required.";
             }
 
-            sendActionsToMaster();
+            if(currentTimeSlot != null)
+            {
+                sendActionsToMaster();
+            }     
         }
 
         private void sendActionsToMaster()
         {
-            if(currentTimeSlot.action.Contains("kook") && currentTimeSlot.action.Contains("water"))
+            if(currentTimeSlot.action.Contains("kook") && currentTimeSlot.action.Contains("water") && currentTimeSlot.duration == 0)
             {
                 if(currentTimeSlot.appliance == uCookContract.Appliances.uCook_Waterkoker)
                 {
@@ -125,16 +131,10 @@ namespace ClientUCook
                     MessageBox.Show("kook pan pit aan");
                 }
             }
-            else if(currentTimeSlot.duration > 0)
+
+            if(currentTimeSlot.duration > 0)
             {
-                if (currentTimeSlot.appliance == uCookContract.Appliances.uCook_Kookpan)
-                {
-                    MessageBox.Show("Kook pan pit aan");
-                }
-                else if (currentTimeSlot.appliance == uCookContract.Appliances.uCook_Braadpan)
-                {
-                    MessageBox.Show("braad pan pit aan");
-                }
+                durationTimer.Enabled = true;
             }
         }
 
@@ -201,6 +201,23 @@ namespace ClientUCook
         private void MessageReceived(String message)
         {
 
+        }
+
+        //////////////////////
+        //Events
+        /////////////////////
+        private void durationTimer_Tick(object sender, EventArgs e)
+        {
+            timePassed++;
+            tbDuration.Text = (currentTimeSlot.duration - timePassed).ToString();
+
+            if (timePassed == currentTimeSlot.duration)
+            {
+                timePassed = 0;
+                durationTimer.Enabled = false;
+                timeLine.nextSlot();
+                updateSlots();
+            }
         }
 
         //////////////////////
