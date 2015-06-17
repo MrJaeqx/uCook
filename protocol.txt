@@ -13,17 +13,17 @@ Beginmarker: #
 tussenmarker: :
 endmarker: %
 
-1GP:P1+_	pit1 aan
-1GP:P2+_	pit2 aan
-1GP:P3+_	pit3 aan
-1GP:P4+_	pit4 aan
+1GP:P1+		pit1 aan
+1GP:P2+		pit2 aan
+1GP:P3+		pit3 aan
+1GP:P4+		pit4 aan
 
-1GP:P1-_	pit1 uit
-1GP:P2-_	pit2 uit
-1GP:P3-_	pit3 uit
-1GP:P4-_	pit4 uit
+1GP:P1-		pit1 uit
+1GP:P2-		pit2 uit
+1GP:P3-		pit3 uit
+1GP:P4-		pit4 uit
 
-2WK:ON+_	waterkoker AAN
+2WK:ON+		waterkoker AAN
 
 
 /////////////////////////////////////////////////////////////////
@@ -32,10 +32,10 @@ Beginmarker: #
 tussenmarker: :
 endmarker: %
 
-1GP:AC+_	action acknowledgement gaspit (button)
+1GP:AC+		action acknowledgement pit (button)
 
-2WK:FIL_	waterkoker gevuld
-2WK:COO_	water kookt
+2WK:FIL		waterkoker gevuld
+2WK:COO		water kookt
 
 
 /////////////////////////////////////////////////////////////////
@@ -51,7 +51,7 @@ electrische fornuis CAN-BUS berichten:
 1GP:P3-_	pit3 uit
 1GP:P4-_	pit4 uit
 
-1GP:AC+_	action acknowledgement gaspit (button)
+1GP:AC+_	action acknowledgement pit (button)
 
 
 /////////////////////////////////////////////////////////////////
