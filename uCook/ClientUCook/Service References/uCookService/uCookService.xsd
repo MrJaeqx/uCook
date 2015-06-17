@@ -18,8 +18,11 @@
   <xs:element name="ArrayOfAppliances" nillable="true" type="tns:ArrayOfAppliances" />
   <xs:simpleType name="Appliances">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
       <xs:enumeration value="uCook_Kookpan" />
       <xs:enumeration value="uCook_Braadpan" />
+      <xs:enumeration value="uCook_Wokpan" />
+      <xs:enumeration value="uCook_Grillpan" />
       <xs:enumeration value="uCook_Waterkoker" />
     </xs:restriction>
   </xs:simpleType>

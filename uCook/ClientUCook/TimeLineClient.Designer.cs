@@ -128,7 +128,6 @@
             this.Name = "TimeLineClient";
             this.Text = "TimeLineClient";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TimeLineClient_FormClosed);
-            this.Shown += new System.EventHandler(this.TimeLineClient_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

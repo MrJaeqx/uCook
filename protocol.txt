@@ -56,7 +56,7 @@ endmarker: %
 
 1GP:AC+		action acknowledgement pit (button)
 
-2WK:FIL		waterkoker gevuld
+2WK:AC+		waterkoker gevuld
 2WK:COO		water kookt
 
 START_SYNC	Nieuwe synchronisatie wordt gestart
@@ -88,7 +88,7 @@ waterkoker CAN-BUS berichten:
 
 2WK:ON+_	waterkoker AAN
 
-2WK:FIL_	waterkoker gevuld
+2WK:AC+_	waterkoker gevuld
 2WK:COO_	water kookt
 
 2WK:INI_	waterkoker is initialised / present

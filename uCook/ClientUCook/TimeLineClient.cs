@@ -29,12 +29,19 @@ namespace ClientUCook
         //minute counter
         private int timePassed = 0;
 
+        //available appliances
+        List<uCookContract.Appliances> availableAppliances = null;
+
         public TimeLineClient(uCookContract.Recipe recipe)
         {
             InitializeComponent();
             timeLine = recipe.timeLine;
 
             serialPort = new SerialPort();
+
+            initPorts();
+
+            updateSlots(false);
         }
 
         //////////////////////
@@ -77,8 +84,15 @@ namespace ClientUCook
         //////////////////////
         //methods
         //////////////////////
-        private bool updateSlots()
+        private bool updateSlots(bool next)
         {
+            bool success = true;
+
+            if(next)
+            {
+                timeLine.nextSlot();
+            }
+            
             //check for out of range exception
             if(timeLine.currentSlot < timeLine.ammountTimeSlots)
             {
@@ -88,10 +102,11 @@ namespace ClientUCook
                 if(currentTimeSlot.duration != 0)
                 {
                     tbDuration.Text = currentTimeSlot.duration.ToString();
+                    durationTimer.Enabled = true;
                 }
                 else
                 {
-                    tbDuration.Text = "waiting for user confirmation";
+                    tbDuration.Text = "waiting for confirmation";
                 }
             }
             else
@@ -110,16 +125,24 @@ namespace ClientUCook
             {
                 nextTimeSlot = null;
                 tbNext.Text = "no action required.";
+                success = false;
             }
 
             //send to Arduino
             if(currentTimeSlot != null)
             {
                 sendActionsToMaster();
-                return true;
             }
 
-            return false;
+            return success;
+        }
+
+        private void resetGP()
+        {
+            SendMessage(messageBeginMarker + "1GP:P1-" + messageEndMarker);
+            SendMessage(messageBeginMarker + "1GP:P2-" + messageEndMarker);
+            SendMessage(messageBeginMarker + "1GP:P3-" + messageEndMarker);
+            SendMessage(messageBeginMarker + "1GP:P4-" + messageEndMarker);
         }
 
         private void sendActionsToMaster()
@@ -127,10 +150,7 @@ namespace ClientUCook
             switch (currentTimeSlot.appliance)
             {
                 case uCookContract.Appliances.none:     //TODO: turn of seperate appliances
-                    SendMessage(messageBeginMarker + "1GP:P1-" + messageEndMarker);
-                    SendMessage(messageBeginMarker + "1GP:P2-" + messageEndMarker);
-                    SendMessage(messageBeginMarker + "1GP:P3-" + messageEndMarker);
-                    SendMessage(messageBeginMarker + "1GP:P4-" + messageEndMarker);
+                    resetGP();
                     break;
                 case uCookContract.Appliances.uCook_Kookpan:
                     SendMessage(messageBeginMarker + "1GP:P1+" + messageEndMarker);
@@ -141,13 +161,18 @@ namespace ClientUCook
                 case uCookContract.Appliances.uCook_Wokpan:
                     SendMessage(messageBeginMarker + "1GP:P3+" + messageEndMarker);
                     break;
-                case uCookContract.Appliances.uCook_Grilpan:
+                case uCookContract.Appliances.uCook_Grillpan:
                     SendMessage(messageBeginMarker + "1GP:P4+" + messageEndMarker);
                     break;
                 case uCookContract.Appliances.uCook_Waterkoker:
                     SendMessage(messageBeginMarker + "2WK:ON+" + messageEndMarker);
                     break;
             }           
+        }
+
+        private void requestAppliances()
+        {
+            SendMessage(messageBeginMarker + "UPDATE" + messageEndMarker);
         }
 
         //////////////////////
@@ -157,20 +182,18 @@ namespace ClientUCook
         {
             if(btnNext.Text == "Next")
             {
-                timeLine.nextSlot();
-
-                bool succes = updateSlots();
-
-                if (!succes)
+                if (!updateSlots(true))
                 {
                     btnNext.Text = "Finish";
                 }
             }
             else if(btnNext.Text == "Finish")
             {
-
-            }
-            
+                uCookClient.mainScreen.Enabled = true;
+                timeLine.reset();
+                resetGP();
+                this.Close();
+            }           
         }
 
         //////////////////////
@@ -225,15 +248,33 @@ namespace ClientUCook
 
         private void MessageReceived(String message)
         {
+            //check if message has correct format
             if (message.Substring(0, 1) == messageBeginMarker 
                 && message.Substring(message.Length -1, 1) == messageEndMarker)
             {
                 message = message.Substring(1, message.Length - 2);
-
-                if(message == "1GP:AC+")
+                if(message.Contains(":"))
                 {
-                    timeLine.nextSlot();
+                    if (message.Contains("AC+")) //general acknowledge
+                    {
+                        if (!updateSlots(true))
+                        {
+                            btnNext.Text = "Finish";
+                        }
+                    }
+                    /*else if (message == "2WK:COO") //waterkoker done
+                    {
+                        if (!updateSlots(true))
+                        {
+                            btnNext.Text = "Finish";
+                        }
+                    }*/
                 }
+                else
+                {
+                    
+                }
+                
             }    
         }
 
@@ -249,8 +290,11 @@ namespace ClientUCook
             {
                 timePassed = 0;
                 durationTimer.Enabled = false;
-                timeLine.nextSlot();
-                updateSlots();
+
+                if (!updateSlots(true))
+                {
+                    btnNext.Text = "Finish";
+                }
             }
         }
 
@@ -261,16 +305,11 @@ namespace ClientUCook
         {
             if (serialPort.IsOpen)
             {
+                resetGP();
                 serialPort.Close();
             }
+            timeLine.reset();
             uCookClient.mainScreen.Enabled = true;
-        }
-
-        private void TimeLineClient_Shown(object sender, EventArgs e)
-        {
-            updateSlots();
-
-            initPorts(); 
         }
     }
 }

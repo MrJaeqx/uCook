@@ -39,6 +39,9 @@ namespace ClientUCook
 
             //proxy init
             proxy = new uCookService.RecipesClient();
+
+            //add screen init
+            addScreen = new AddScreen(proxy.getAvailableAppliances());
         }
 
         /////////////////////
@@ -46,7 +49,6 @@ namespace ClientUCook
         /////////////////////
         private void addRecipeBtn_Click(object sender, EventArgs e)
         {
-            addScreen = new AddScreen(proxy.getAvailableAppliances());
             addScreen.Show();
             this.Enabled = false;
         }

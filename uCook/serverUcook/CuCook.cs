@@ -35,7 +35,7 @@ namespace serverUcook
             pasta.addAppliance(Appliances.uCook_Waterkoker);
             pasta.addAppliance(Appliances.none);
             pasta.timeLine.addTimeSlot("Doe 1L water in de uCook waterkoker.", 0, Appliances.none);
-            pasta.timeLine.addTimeSlot("Wacht tot het water kookt", 5, Appliances.uCook_Waterkoker);
+            pasta.timeLine.addTimeSlot("Wacht tot het water kookt", 0, Appliances.uCook_Waterkoker);
             pasta.timeLine.addTimeSlot("Doe het kokende water in de uCook kookpan", 0, Appliances.uCook_Kookpan);
             pasta.timeLine.addTimeSlot("Voeg de pasta toe aan het water", 0, Appliances.uCook_Kookpan);
             pasta.timeLine.addTimeSlot("Wacht tot de pasta klaar is", 25, Appliances.uCook_Kookpan);
