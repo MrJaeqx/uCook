@@ -1,7 +1,0 @@
-C:\Users\Johri\Dropbox\OIS\Periode 2\Voorbeeldje\Voorbeeldje\bin\Debug\Voorbeeldje.exe
-C:\Users\Johri\Dropbox\OIS\Periode 2\Voorbeeldje\Voorbeeldje\bin\Debug\Voorbeeldje.pdb
-C:\Users\Johri\Dropbox\OIS\Periode 2\Voorbeeldje\Voorbeeldje\obj\x86\Debug\Voorbeeldje.Form1.resources
-C:\Users\Johri\Dropbox\OIS\Periode 2\Voorbeeldje\Voorbeeldje\obj\x86\Debug\Voorbeeldje.Properties.Resources.resources
-C:\Users\Johri\Dropbox\OIS\Periode 2\Voorbeeldje\Voorbeeldje\obj\x86\Debug\Voorbeeldje.csproj.GenerateResource.Cache
-C:\Users\Johri\Dropbox\OIS\Periode 2\Voorbeeldje\Voorbeeldje\obj\x86\Debug\Voorbeeldje.exe
-C:\Users\Johri\Dropbox\OIS\Periode 2\Voorbeeldje\Voorbeeldje\obj\x86\Debug\Voorbeeldje.pdb
