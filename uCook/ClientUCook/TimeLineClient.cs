@@ -262,13 +262,13 @@ namespace ClientUCook
                             btnNext.Text = "Finish";
                         }
                     }
-                    else if (message == "2WK:COO") //waterkoker done
+                    /*else if (message == "2WK:COO") //waterkoker done
                     {
                         if (!updateSlots(true))
                         {
                             btnNext.Text = "Finish";
                         }
-                    }
+                    }*/
                 }
                 else
                 {
