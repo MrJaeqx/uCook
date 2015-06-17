@@ -77,8 +77,9 @@ namespace uCookContract
     [Serializable]
     public enum Appliances
     {
-        uCook_Kookpan = 0,
-        uCook_Braadpan = 1,
-        uCook_Waterkoker = 2
+        none = 0,
+        uCook_Kookpan = 1,
+        uCook_Braadpan = 2,
+        uCook_Waterkoker = 3
     }
 }

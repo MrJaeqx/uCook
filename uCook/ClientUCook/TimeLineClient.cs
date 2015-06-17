@@ -120,21 +120,20 @@ namespace ClientUCook
 
         private void sendActionsToMaster()
         {
-            if(currentTimeSlot.action.Contains("kook") && currentTimeSlot.action.Contains("water") && currentTimeSlot.duration == 0)
+            switch(currentTimeSlot.appliance)
             {
-                if(currentTimeSlot.appliance == uCookContract.Appliances.uCook_Waterkoker)
-                {
-                    MessageBox.Show("water koker aan");
-                }
-                else if(currentTimeSlot.appliance == uCookContract.Appliances.uCook_Kookpan)
-                {
-                    MessageBox.Show("kook pan pit aan");
-                }
-            }
-
-            if(currentTimeSlot.duration > 0)
-            {
-                durationTimer.Enabled = true;
+                case uCookContract.Appliances.none:
+                    //SendMessage("");
+                    break;
+                case uCookContract.Appliances.uCook_Braadpan:
+                    //SendMessage("");
+                    break;
+                case uCookContract.Appliances.uCook_Kookpan:
+                    //SendMessage("");
+                    break;
+                case uCookContract.Appliances.uCook_Waterkoker:
+                    //SendMessage("");
+                    break;
             }
         }
 

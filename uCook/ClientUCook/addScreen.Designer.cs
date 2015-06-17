@@ -82,10 +82,6 @@
             // 
             this.cbAppliances.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAppliances.FormattingEnabled = true;
-            this.cbAppliances.Items.AddRange(new object[] {
-            "uCook Kookpan",
-            "uCook Braadpan",
-            "uCook Waterkoker"});
             this.cbAppliances.Location = new System.Drawing.Point(221, 80);
             this.cbAppliances.Name = "cbAppliances";
             this.cbAppliances.Size = new System.Drawing.Size(114, 21);

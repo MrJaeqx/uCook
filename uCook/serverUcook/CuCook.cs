@@ -22,9 +22,10 @@ namespace serverUcook
             Console.WriteLine("number of items in database: {0}", recipeDatabase.Count);
 
             availableAppliances = new List<Appliances>();
+            availableAppliances.Add(Appliances.none);
             availableAppliances.Add(Appliances.uCook_Waterkoker);
             availableAppliances.Add(Appliances.uCook_Kookpan);
-            availableAppliances.Add(Appliances.uCook_Braadpan);
+            availableAppliances.Add(Appliances.uCook_Braadpan);          
         }
 
         private Recipe pastaDummy()
@@ -34,7 +35,7 @@ namespace serverUcook
             pasta.addIngredient(new Ingredient("pennen", "150g"));
             pasta.addAppliance(Appliances.uCook_Kookpan);
             pasta.addAppliance(Appliances.uCook_Waterkoker);
-            pasta.timeLine.addTimeSlot("Doe 1L water in de uCook waterkoker.", 0, Appliances.uCook_Waterkoker);
+            pasta.timeLine.addTimeSlot("Doe 1L water in de uCook waterkoker.", 0, Appliances.none);
             pasta.timeLine.addTimeSlot("Wacht tot het water kookt", 5, Appliances.uCook_Waterkoker);
             pasta.timeLine.addTimeSlot("Doe het kokende water in de uCook kookpan", 0, Appliances.uCook_Kookpan);
             pasta.timeLine.addTimeSlot("Voeg de pasta toe aan het water", 0, Appliances.uCook_Kookpan);
@@ -51,12 +52,12 @@ namespace serverUcook
             rijst.addIngredient(new Ingredient("Rijst", "100g"));
             rijst.addAppliance(Appliances.uCook_Kookpan);
             rijst.addAppliance(Appliances.uCook_Waterkoker);
-            rijst.timeLine.addTimeSlot("Doe 1L water in de uCook Waterkoker.", 0, Appliances.uCook_Waterkoker);
+            rijst.timeLine.addTimeSlot("Doe 1L water in de uCook Waterkoker.", 0, Appliances.none);
             rijst.timeLine.addTimeSlot("Wacht tot het water kookt", 5, Appliances.uCook_Waterkoker);
             rijst.timeLine.addTimeSlot("Giet het kokende water over in de uCook Kookpan", 0, Appliances.uCook_Kookpan);
             rijst.timeLine.addTimeSlot("Doe de rijst in de pan met kokend water", 0, Appliances.uCook_Kookpan);
             rijst.timeLine.addTimeSlot("Wacht tot de rijst klaar is.", 8, Appliances.uCook_Kookpan);
-            rijst.timeLine.addTimeSlot("Giet de rijst af", 0, Appliances.uCook_Kookpan);
+            rijst.timeLine.addTimeSlot("Giet de rijst af", 0, Appliances.none);
             rijst.setTotalTime();
             return rijst;
         }
@@ -66,6 +67,13 @@ namespace serverUcook
             Recipe gebakkenAardappelen = new Recipe();
             gebakkenAardappelen.name = "gebakkenAardappelen voor 4!";
             gebakkenAardappelen.addIngredient(new Ingredient("Aardappelschijfjes", "600g"));
+            gebakkenAardappelen.addIngredient(new Ingredient("Bakboter", "100g"));
+            gebakkenAardappelen.addAppliance(Appliances.uCook_Braadpan);
+            gebakkenAardappelen.timeLine.addTimeSlot("Doe de boter in de pan.", 0, Appliances.uCook_Braadpan);
+            gebakkenAardappelen.timeLine.addTimeSlot("Wacht tot de boter is gesmolten", 1, Appliances.uCook_Braadpan);
+            gebakkenAardappelen.timeLine.addTimeSlot("Doe de aardappelschijfjes in de pan.", 0, Appliances.uCook_Braadpan);
+            gebakkenAardappelen.timeLine.addTimeSlot("Roer tijdens het braden af en toe de aardappelschijfjes om", 8, Appliances.uCook_Braadpan);
+            gebakkenAardappelen.timeLine.addTimeSlot("Schep de aardappelen op", 0, Appliances.none);
 
             return gebakkenAardappelen;
         }
