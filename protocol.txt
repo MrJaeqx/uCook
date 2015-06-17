@@ -14,17 +14,14 @@ electrische fornuis CAN-BUS berichten:
 1GP:P1+_	pit1 aan
 1GP:P2+_	pit2 aan
 1GP:P3+_	pit3 aan
-4GP:P4+_	pit4 aan
+1GP:P4+_	pit4 aan
 
 1GP:P1-_	pit1 uit
 1GP:P2-_	pit2 uit
 1GP:P3-_	pit3 uit
 1GP:P4-_	pit4 uit
 
-1GP:A1+_	antwoord 1 AAN
-1GP:A2+_	antwoord 2 AAN
-1GP:A3+_	antwoord 3 AAN
-1GP:A4+_	antwoord 4 AAN
+1GP:ACT+	action acknowledgement gaspit (button)
 
 waterkoker CAN-BUS berichten:
 
