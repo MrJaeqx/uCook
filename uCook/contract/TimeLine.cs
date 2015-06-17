@@ -33,6 +33,11 @@ namespace uCookContract
             currentSlot++;
         }
 
+        public void reset()
+        {
+            currentSlot = 0;
+        }
+
         public TimeSlot getAction()
         {
             return timeLine[currentSlot];

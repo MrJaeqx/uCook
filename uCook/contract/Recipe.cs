@@ -81,7 +81,7 @@ namespace uCookContract
         uCook_Kookpan = 1,
         uCook_Braadpan = 2,
         uCook_Wokpan = 3,
-        uCook_Grilpan = 4,
+        uCook_Grillpan = 4,
         uCook_Waterkoker = 5
     }
 }
