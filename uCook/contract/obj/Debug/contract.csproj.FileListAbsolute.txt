@@ -6,4 +6,3 @@ C:\Users\Tim\Documents\GitHub\uCook\uCook\contract\bin\Debug\contract.dll
 C:\Users\Tim\Documents\GitHub\uCook\uCook\contract\bin\Debug\contract.pdb
 C:\Users\Tim\Documents\GitHub\uCook\uCook\contract\obj\Debug\contract.dll
 C:\Users\Tim\Documents\GitHub\uCook\uCook\contract\obj\Debug\contract.pdb
-C:\Users\Tim\Documents\GitHub\uCook\uCook\contract\obj\Debug\contract.csprojResolveAssemblyReference.cache
