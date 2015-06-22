@@ -1,6 +1,12 @@
 #include <SPI.h>
 #include "mcp_can.h"
 #include <Bounce2.h>
+#include <Servo.h>
+
+// Create servo and servo position
+Servo servo;
+int pos = 0;
+bool up = true;
 
 // Set CS pin for CAN bus
 // Default D10
@@ -15,11 +21,10 @@ String buttonPressed = "3BL:AC+";
 String doneBlending = "3BL:AC+";
 String blenderSlaveStartup = "3BL:INI";
 
-int isBlendingPin = 7;
-int doneBlendingPin = 8;
-
 unsigned long time;
 bool timeUpdate = true;
+unsigned long time1;
+bool timeUpdate1 = true;
 bool msgSent = false;
 
 void setup() {
@@ -29,15 +34,12 @@ void setup() {
   // Setting up the button, setup the Bounce instance :
   pinMode(button, INPUT);
 
-  pinMode(isBlendingPin, OUTPUT);
-  pinMode(doneBlendingPin, OUTPUT);
-
-  digitalWrite(isBlendingPin, LOW);
-  digitalWrite(doneBlendingPin, LOW);
-
   digitalWrite(button, HIGH);
   debouncer.attach(button);
   debouncer.interval(5); // interval in ms
+
+  // Servo on pin 6
+  servo.attach(6);
 
 START_INIT:
 
@@ -104,7 +106,6 @@ void loop() {
         if (message.substring(4, 7) == "ON+")
         {
           // start blending
-          digitalWrite(isBlendingPin, HIGH);
           timeUpdate = false;
         }
       }
@@ -117,7 +118,7 @@ void checkButton()
 {
   debouncer.update();
   if ( debouncer.fell() ) {
-    // Water filled
+    // Blender filled
     char stmp[8] = {0};
     buttonPressed.toCharArray(stmp, 8);
     Serial.print("Can return val: ");
@@ -128,22 +129,34 @@ void checkButton()
 
 // Check delays with millis()
 void checkTime() {
-  if (millis() - time > 10000 && !msgSent) {
-    // Cooking done
-    char stmpC[8] = {0};
-    doneBlending.toCharArray(stmpC, 8);
-    Serial.print("Can return val: ");
-    Serial.println(CAN.sendMsgBuf(0x03, 0, 8, (unsigned char *) stmpC), DEC);
+  if (millis() - time > 1000) {
+    if (timeUpdate1)
+    {
+      time1 = millis();
+    }
+    timeUpdate1 = false;
 
-    digitalWrite(doneBlendingPin, HIGH);
-    msgSent = true;
-  }
-  else if (millis() - time > 20000)
-  {
-    // After 20sec LEDs uit
-    digitalWrite(doneBlendingPin, LOW);
-    digitalWrite(isBlendingPin, LOW);
-    timeUpdate = true;
-    msgSent = false;
+    // Blending
+    servo.write(pos);
+
+    if (millis() - time1 > 1) {
+      if (up) pos++; else pos--;
+      if (pos == 180) up = false;
+      if (pos == 0) up = true;
+      timeUpdate1 = true;
+    }
+
+    // Blending done
+    if (millis() - time > 20000)
+    {
+      char stmpC[8] = {0};
+      doneBlending.toCharArray(stmpC, 8);
+      Serial.print("Can return val: ");
+      Serial.println(CAN.sendMsgBuf(0x03, 0, 8, (unsigned char *) stmpC), DEC);
+      timeUpdate = true;
+      pos = 0;
+      up = true;
+    }
+
   }
 }
