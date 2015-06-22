@@ -88,7 +88,18 @@ waterkoker CAN-BUS berichten:
 
 2WK:ON+_	waterkoker AAN
 
-2WK:AC+_	waterkoker gevuld
-2WK:COO_	water kookt
+2WK:AC+_	action acknowledgement - waterkoker gevuld
+2WK:AC+_	action acknowledgement - water kookt
 
 2WK:INI_	waterkoker is initialised / present
+
+
+/////////////////////////////////////////////////////////////////
+waterkoker CAN-BUS berichten:
+
+3BL:ON+_	blender AAN
+
+3BL:AC+_	action acknowledgement - blender gevuld
+3BL:AC+_	action acknowledgement - blender klaar
+
+2WK:INI_	blender is initialised / present
