@@ -26,22 +26,29 @@ namespace ClientUCook
         private uCookContract.TimeSlot currentTimeSlot = null;
         private uCookContract.TimeSlot nextTimeSlot = null;
 
-        //minute counter
-        private int timePassed = 0;
+        //counters
+        private int timePassed = 0; //minute
+        private int timeCounter = 0; //seconde
 
         //available appliances
         List<uCookContract.Appliances> availableAppliances = null;
+
+        //check available appliances
+        List<uCookContract.Appliances> requiredAppliances = null;
+
+        bool showMB = false;
 
         public TimeLineClient(uCookContract.Recipe recipe)
         {
             InitializeComponent();
             timeLine = recipe.timeLine;
+            requiredAppliances = recipe.appliances;
 
             serialPort = new SerialPort();
 
             initPorts();
 
-            updateSlots(false);
+            SendMessage("#UPDATE%");
         }
 
         //////////////////////
@@ -161,11 +168,14 @@ namespace ClientUCook
                 case uCookContract.Appliances.uCook_Wokpan:
                     SendMessage(messageBeginMarker + "1GP:P3+" + messageEndMarker);
                     break;
-                case uCookContract.Appliances.uCook_Grillpan:
+                case uCookContract.Appliances.uCook_Grilpan:
                     SendMessage(messageBeginMarker + "1GP:P4+" + messageEndMarker);
                     break;
                 case uCookContract.Appliances.uCook_Waterkoker:
                     SendMessage(messageBeginMarker + "2WK:ON+" + messageEndMarker);
+                    break;
+                case uCookContract.Appliances.uCook_Blender:
+                    SendMessage(messageBeginMarker + "3BL:ON+" + messageEndMarker);
                     break;
             }           
         }
@@ -253,33 +263,72 @@ namespace ClientUCook
                 && message.Substring(message.Length -1, 1) == messageEndMarker)
             {
                 message = message.Substring(1, message.Length - 2);
-                if(message.Contains(":"))
+                if (message.Contains("AC+"))
                 {
-                    if (message.Contains("AC+")) //general acknowledge
+                    if (!updateSlots(true))
                     {
-                        if (!updateSlots(true))
-                        {
-                            btnNext.Text = "Finish";
-                        }
+                        btnNext.Text = "Finish";
                     }
-                    /*else if (message == "2WK:COO") //waterkoker done
-                    {
-                        if (!updateSlots(true))
-                        {
-                            btnNext.Text = "Finish";
-                        }
-                    }*/
                 }
-                else
+                else if (message == "START_SYNC")
                 {
-                    
+                    availableAppliances = new List<uCookContract.Appliances>();
+                    availableAppliances.Clear();
+                    availableAppliances.Add(uCookContract.Appliances.none);
+
+                    updateAppliancesTimer.Enabled = true;
                 }
-                
+                else if (message.Contains("PRESENT"))
+                {
+                    if (message.Contains("1GP"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Braadpan);
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Grilpan);
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Kookpan);
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Wokpan);
+                    }
+                    if (message.Contains("2WK"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Waterkoker);
+                    }
+                    if (message.Contains("3BL"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Blender);
+                    }
+                    if (message.Contains("4VW"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Vaatwasser);
+                    }
+                    if (message.Contains("5OV"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Oven);
+                    }
+                    if (message.Contains("6MW"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Magnetron);
+                    }
+                    if (message.Contains("7AK"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Afzuigkap);
+                    }
+                    if (message.Contains("8TI"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Tostiijzer);
+                    }
+                    if (message.Contains("9WS"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Weegschaal);
+                    }
+                    if (message.Contains("0FP"))
+                    {
+                        availableAppliances.Add(uCookContract.Appliances.uCook_Frituurpan);
+                    }
+                }                 
             }    
         }
 
         //////////////////////
-        //Events
+        //Timers
         /////////////////////
         private void durationTimer_Tick(object sender, EventArgs e)
         {
@@ -298,6 +347,53 @@ namespace ClientUCook
             }
         }
 
+        private void updateAppliancesTimer_Tick(object sender, EventArgs e)
+        {
+            timeCounter++;
+
+            if (timeCounter == 5)
+            {
+                if (availableAppliances != null && availableAppliances.Count != 0)
+                {
+                    //check if available
+                    foreach (uCookContract.Appliances req in requiredAppliances)
+                    {
+                        bool present = false;
+
+                        foreach (uCookContract.Appliances ava in availableAppliances)
+                        {
+                            if (req == ava)
+                            {
+                                present = true;
+                            }
+                        }
+
+                        if (!present && !showMB)
+                        {
+                            showMB = true;
+                            MessageBox.Show("You do not have " + req.ToString() + " connected.");
+                            if(timeLine.currentSlot == 0)
+                            {
+                                this.Close();
+                            }
+                            else
+                            {
+                                //nopes
+                            }                                
+                        }
+                    }
+
+                    updateSlots(false);
+                }
+            }
+            else if (timeCounter == 10)
+            {
+                timeCounter = 0;
+                SendMessage("#UPDATE%");
+            }
+            
+        }
+
         //////////////////////
         //Close port on form close
         /////////////////////
@@ -311,5 +407,7 @@ namespace ClientUCook
             timeLine.reset();
             uCookClient.mainScreen.Enabled = true;
         }
+
+        
     }
 }

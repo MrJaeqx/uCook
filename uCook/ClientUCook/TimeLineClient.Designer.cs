@@ -38,6 +38,7 @@
             this.tbDuration = new System.Windows.Forms.TextBox();
             this.lblTime = new System.Windows.Forms.Label();
             this.durationTimer = new System.Windows.Forms.Timer(this.components);
+            this.updateAppliancesTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnNext
@@ -113,6 +114,11 @@
             this.durationTimer.Interval = 60000;
             this.durationTimer.Tick += new System.EventHandler(this.durationTimer_Tick);
             // 
+            // updateAppliancesTimer
+            // 
+            this.updateAppliancesTimer.Interval = 500;
+            this.updateAppliancesTimer.Tick += new System.EventHandler(this.updateAppliancesTimer_Tick);
+            // 
             // TimeLineClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,5 +150,6 @@
         private System.Windows.Forms.TextBox tbDuration;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Timer durationTimer;
+        private System.Windows.Forms.Timer updateAppliancesTimer;
     }
 }

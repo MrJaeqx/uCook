@@ -81,7 +81,15 @@ namespace uCookContract
         uCook_Kookpan = 1,
         uCook_Braadpan = 2,
         uCook_Wokpan = 3,
-        uCook_Grillpan = 4,
-        uCook_Waterkoker = 5
+        uCook_Grilpan = 4,
+        uCook_Waterkoker = 5,
+        uCook_Blender = 6,
+        uCook_Vaatwasser = 7,
+        uCook_Oven = 8,
+        uCook_Magnetron = 9,
+        uCook_Afzuigkap = 10,
+        uCook_Tostiijzer = 11,
+        uCook_Weegschaal = 12,
+        uCook_Frituurpan = 13
     }
 }

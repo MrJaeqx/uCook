@@ -20,6 +20,7 @@ namespace serverUcook
             recipeDatabase.Add(pastaDummy());
             recipeDatabase.Add(rijstDummy());
             recipeDatabase.Add(gebakkenAardappelenDummy());
+            recipeDatabase.Add(fruitSmoothieDummy());
             Console.WriteLine("number of items in database: {0}", recipeDatabase.Count);
 
             availableAppliances = new List<Appliances>();
@@ -53,7 +54,7 @@ namespace serverUcook
             rijst.addAppliance(Appliances.uCook_Waterkoker);
             rijst.addAppliance(Appliances.none);
             rijst.timeLine.addTimeSlot("Doe 1L water in de uCook Waterkoker.", 0, Appliances.none);
-            rijst.timeLine.addTimeSlot("Wacht tot het water kookt", 5, Appliances.uCook_Waterkoker);
+            rijst.timeLine.addTimeSlot("Wacht tot het water kookt", 0, Appliances.uCook_Waterkoker);
             rijst.timeLine.addTimeSlot("Giet het kokende water over in de uCook Kookpan", 0, Appliances.uCook_Kookpan);
             rijst.timeLine.addTimeSlot("Doe de rijst in de pan met kokend water", 0, Appliances.uCook_Kookpan);
             rijst.timeLine.addTimeSlot("Wacht tot de rijst klaar is.", 8, Appliances.uCook_Kookpan);
@@ -77,6 +78,25 @@ namespace serverUcook
             gebakkenAardappelen.timeLine.addTimeSlot("Schep de aardappelen op", 0, Appliances.none);
             gebakkenAardappelen.setTotalTime();
             return gebakkenAardappelen;
+        }
+
+        private Recipe fruitSmoothieDummy()
+        {
+            Recipe fruitSmoothie = new Recipe();
+            fruitSmoothie.name = "Lekkere fruit smoothie.";
+            fruitSmoothie.addIngredient(new Ingredient("bannaan", "1 stuk"));
+            fruitSmoothie.addIngredient(new Ingredient("yoghurt", "500 ml"));
+            fruitSmoothie.addIngredient(new Ingredient("Aardbei", "1 doosje"));
+            fruitSmoothie.addAppliance(Appliances.none);
+            fruitSmoothie.addAppliance(Appliances.uCook_Blender);
+            fruitSmoothie.timeLine.addTimeSlot("Snij de bannaan in schijfjes.", 0, Appliances.none);
+            fruitSmoothie.timeLine.addTimeSlot("Snij de aardbeien in stukjes.", 0, Appliances.none);
+            fruitSmoothie.timeLine.addTimeSlot("Doe het fruit in de blender.", 0, Appliances.none);
+            fruitSmoothie.timeLine.addTimeSlot("Doe de yoghurt in de blender.", 0, Appliances.none);
+            fruitSmoothie.timeLine.addTimeSlot("Wacht tot de blender klaar is.", 0, Appliances.uCook_Blender);
+            fruitSmoothie.timeLine.addTimeSlot("Schenk uit.", 0, Appliances.none);
+            fruitSmoothie.setTotalTime();
+            return fruitSmoothie;
         }
 
         public Recipe sendRecipe(string name)
